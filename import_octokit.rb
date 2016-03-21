@@ -55,7 +55,7 @@ issues.each_with_index do |issue, i|
 	issue_number = client.create_issue(repo, issue.title, issue.body, {:labels => issue.labels.join(','), :assignee => issue.assignee}).number
     #elapsed_seconds = ((Time.now - start_time) * 1000).to_i
     #puts "'#{i}' - elapsed seconds: '#{elapsed_seconds}'"
-    if (i+1) % 30 == 0
-      sleep(10)
+    if (i+1) % 20 == 0
+      sleep(30)
     end
 end
