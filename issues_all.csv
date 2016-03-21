@@ -1,0 +1,2248 @@
+Title;Labels;Description;Assignee
+Unicity is not checked. There is a test that check...;type:AT,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Unicity is not checked. There is a test that checks whether an element is available and not empty. But there is no control whether this element occurs just once or multiple times.
+";PwC/ii
+How is multilinguism taken into account?...;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+How is multilinguism taken into account?
+";PwC/ii
+It seems these tests can't be run in an automated ...;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It seems these tests can't be run in an automated way against the software. 
+It's possible to do this with OGC web services using CITE tests. Some third parties do this for CSW at the moment. 
+Do you know of any pending plans to implement the test suite for automated testing.
+";PwC/ii
+Grouplayers will not be validated under the curren...;type:CR,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Grouplayers will not be validated under the current proposal. However, their use is being promoted within the Geology theme to satisfy the present guidelines. 
+";PwC/ii
+Based on ISO 19105 and the OGC Specification Model...;type:GE,sev:Critical ,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Based on ISO 19105 and the OGC Specification Model, each Markdown document represents a test case. A test case is part of a conformance class, which in turn is part of an abstract test suite for a specification document.
+The current material seems to use 'ATS' where 'Conformance Class' is probably meant. The information which conformance classes form an ATS is, however, not represented. 
+In this context it is important to emphasize that conformance class is the key concept. An ATS is far less important as it is just the aggregation of all the conformance classes in a specification.
+In addition, the term 'ATS' is sometimes also used for a test case.
+# Proposed Change
+Use 'Conformance Class' (or 'CC'/'cc') where 'Abstract Test Suite' (or 'ATS'/'ats') is used now - and where the Technical Guidance includes (implicitly or explicitly) a conformance class. Avoid using wrong a misleading term for test cases.
+Group the conformance classes into ATSs based on the specifications that define the conformance classes.
+I.e., the structure would be for the current 'ATS's:
+ATS: TG View Service 3.11
+CC: WMS 1.3.0 profile
+TC: A.02.IR04.extended...
+TC: A.03.IR05.schema...
+TC: ... (no more test cases shown below)
+CC: WMTS 1.0.0 profile
+ATS: TG Discovery Service 3.1
+CC: CSW 2.0.2 ISO AP profile
+ ATS: TG Download Service 3.1
+CC: Pre-defined Atom
+CC: Pre-defined WFS 2.0.0
+CC: Direct WFS 2.0.0
+CC: Quality of Service
+ATS: TG Metadata 1.3
+CC: ISO 19115/19119 profile
+ATS: TG Spatial Data Services 3.1
+CC: Invocable Spatial Data Services 
+CC: Interoperable Spatial Data Services
+CC: Harmonized Spatial Data Services 
+Notes:
+TG View Services: The document does not explicitly specify conformance classes for the two OGC standards, but implicitly these are defined as 'profiles'. 
+TG View and Discovery Services: It is unclear how the requirements regarding QoS have to be treated as the requirements are not identified as requirements with an identifier.";michellutz
+An ATS belongs to a specification. Therefore, the ...;type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+An ATS belongs to a specification. Therefore, the references in a test case may only reference one specification. 
+However, currently sometimes an IR and a TG are referenced. This is not consistent with the notion of conformance classes or abstract test suites. Since IRs do not specify conformance classes and this is typically done in a technical guidance document, the reference should go to the TG (and the requirement in the TG should reference the relevant parts of the IR).
+# Proposed Change
+For each test case, identify/reference the relevant requirements in the TG document that specifies the conformance class. 
+
+For TGs that identify requirements, list the requirements, otherwise list the most specific section.";michellutz
+For cases where a dependency exists to an external...;type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+For cases where a dependency exists to an external conformance class (dependencies are always on the conformance class level, not on the level of test suites or test cases), clearly identify the conformance class.
+# Proposed Change
+See comment. For example, do not reference tests 'OGC FES 2.0, A.1 Test cases for query', but reference OGC FES 2.0 Conformance Class 'Query'.";michellutz
+It would be very useful to clarify for each test c...;type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It would be very useful to clarify for each test case which messages should be reported in case of identified errors in the test object.
+While the description of a test case should be independent from both the implementation and the values, the test case 'should be complete in the sense that it is sufficient to enable a test verdict to be assigned unambiguously to each potentially observable test outcome (i.e. sequence of test events)' (see ISO 19105). This level of completeness would imply that the potential verdicts / messages can be derived easily from the test case description. 
+In some cases this is trivial, but in general there is a risk that the messages implemented in an ETS may not contain the information that the ATS authors expect.
+# Proposed Change
+For each test case, specify the messages (including the variable information derived from the test object) that should be reported.";michellutz
+The section 'Prerequisites' should have a reliable...;type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The section 'Prerequisites' should have a reliable structure. Prerequisites should only be other test cases in the same conformance class or other conformance classes.
+In some cases, this section does not state other tests that need to be passed first, but actually state new tests.
+# Proposed Change
+Update 'Prerequisites' to be a list of other test cases in the same conformance class or other conformance classes.
+Any prerequisites that actually are new tests need to be converted into separate test cases or included in the test method description.";michellutz
+The documentation of the test cases is inconsisten...;type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The documentation of the test cases is inconsistent. Sometimes the title is the label (A.xxx.xxx) and sometimes a text.
+# Proposed Change
+Make the test case documentation consistent.";michellutz
+The test type is mostly 'automated', but some test...;type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test type is mostly 'automated', but some test are 'manual' or it is unclear. However, in some cases a requirement is considered 'not testable' where a manual test might be possible.
+It is clear that the ETS will only implement automated tests, but it may be helpful to understand if manual tests are within the scope of the ATSs or not.
+# Proposed Change
+Clarify.";michellutz
+Links point to the github repository....;type:GE,type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Links point to the github repository.
+# Proposed Change
+Make them relative links (into the document)";PwC/ii
+Unfortunately we had not had enough time to go thr...;type:G,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Unfortunately we had not had enough time to go through all documents, but we have found parts of the document that are too general. They should be more specific if the purpose is to be able to validate Inspire conformance.
+The following example is taken from ATS metadata.
+- A04 is an example of too general text;
+Test method
+Checks if a resource type (hierarchyLevel) is provided and is taken from the MD_ScopeCode codelist.
+To be relevant for INSPIRE the value should be either 'dataset', 'service' or 'series'
+This test is relevant for Inspire, so the value should just consist of 'dataset', 'service' or 'series'
+- A24 is an example of when the test is written more precise (good example);
+Test method
+The test first checks if there is at least one role element. The element must contain an element at gmd:CI_RoleCode[@codeListValue=x], where x is one of the values described in ISO 19115, chapter B.5.5.
+# Proposed Change
+When Inspire is precise in its requirements, e.g. resource type, then the test should also be more precise.";PwC/ii
+Unfortunately we had not had enough time to go thr...;type:G,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Unfortunately we had not had enough time to go through all documents, but we have found parts of the document that are too general. They should be more specific if the purpose is to be able to validate Inspire conformance.
+The following example is taken from ATS metadata.
+- A04 is an example of too general text;
+Test method
+Checks if a resource type (hierarchyLevel) is provided and is taken from the MD_ScopeCode codelist.
+To be relevant for INSPIRE the value should be either 'dataset', 'service' or 'series'
+This test is relevant for Inspire, so the value should just consist of 'dataset', 'service' or 'series'
+- A24 is an example of when the test is written more precise (good example);
+Test method
+The test first checks if there is at least one role element. The element must contain an element at gmd:CI_RoleCode[@codeListValue=x], where x is one of the values described in ISO 19115, chapter B.5.5.
+# Proposed Change
+When Inspire is precise in its requirements, e.g. resource type, then the test should also be more precise.";PwC/ii
+The target of tests are not clear enough. It is hi...;type:ge,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The target of tests are not clear enough. It is hidden in the method sometimes or in the prerequistes  in others.
+
+# Proposed Change
+Add a target field.";PwC/ii
+The test method descriptions often are not unambig...;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method descriptions often are not unambiguously clear with respect to exactly what needs to the asserted. Providing the Xpath references for each selection and assertion necessary would help.
+";Peter Parslow
+A.01.01.ISO_AP;type:GE,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+ATS not provided as it is still a subject of further implementation specification development.
+
+Coverage: consider of splitting into different tests; support of all mandatory operations and their parameters, correct encoding of the requests and responses
+# Proposed Change
+It could be possible to work with OGC to implement such a test in OGC CITE. As testing for an OGC standard is not INSPIRE-specific and should be provided by OGC.
+
+";Peter Parslow
+A.01.02.extended.behaviour;type:CT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+ATS not provided as it is still a subject of further implementation specification development.
+# Proposed Change
+Remove test case because of redundancy:
+'The test is an abstraction of all the tests in this Abstract Test Suite'";Peter Parslow
+A.01.03.iso_19115_19119.model;type:CT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability + Ambiguity: both the test purpose and test method need more details and clarification in order to arrive at a test case which 'is sufficient to enable a test verdict to be assigned unambiguously to each potentially observable test outcome'
+
+Notes:
+Unique identification (name) for this tests needs to be added (e.g. A.1.3 Metadata request).
+
+NR IS should be added as reference (Annex II Part A 2.1)
+
+XPATH expression is missing
+";Peter Parslow
+A.01.03.iso_19115_19119.model.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Title is wrong:
+A Unique identification for this test
+";PwC/ii
+A.01.03.iso_19115_19119.model.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Title is wrong:
+A Unique identification for this test
+";PwC/ii
+A.01.04.language.parameter;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+IR N2 reference should be part A and not part B
+XPATH expression is missing
+
+# Proposed Change
+Update reference to IR N2
+
+Add XPATH reference";Peter Parslow
+A.01.05.iso-639.codes;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'A.1.4 Language parameter' should be a prerequisite
+";Peter Parslow
+A.01.06.unsupported.languages;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'A.1.4 Language parameter' should be a prerequisite
+Furthermore there is some overlap with case 2 of test case A.1.4
+# Proposed Change
+Add 1.4 as prerequisite or consider merging with test case A.1.4";Peter Parslow
+A.02.01.iso.searching.parameters;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+As the list of SupportedISOQueryables and AdditionalQueryable are known an XPath could be present in the ATS.
+'1.3 Metadata request' should be a prerequisite 
+";Peter Parslow
+A.02.02.additional.language.parameter;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Should be merged with A.01.04
+";Peter Parslow
+A.02.03.addiotional.search.attributes;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Typo in the URL
+XPATH expression is missing
+
+A.3.1 as prerequisite? Additional search attributes are supported by the Discovery Service.
+# Proposed Change
+Addiotional -> additional
+Add XPATH reference";Peter Parslow
+A.02.04.discovery.service.metadata.parameters;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+XPATH expression is missing
+
+Also, clearly identify which Conformance Class / ATS needs to be passed by the document retrieved from the MetadataURL or by the ExtendedCapabilities element. For the MetadataURL it probably is the ats-metadata. For the second case I do not know any Conformance Class / ATS for this. In that case, the test cases for testing the extended capabilities would need to be specified in an unambiguous and testable way.
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.02.05.inspire.service;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+XPATH expression is missing
+Clearly identify the Conformance Class / ATS that the response document must conform to / pass.
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.02.06.federated.catalogues.advertisement;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity:
+Neither requirement 3 nor the test states unambiguously how the list of federated catalogues shall be advertised. Adding Xpath references may help, but the information should also be included in the TG.
+Notes:
+XPATH expression is missing
+
+Under 'notes', hyperlink to section 4.3.4.3
+";Peter Parslow
+A.02.07.federated.discovery.service;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+XPATH expression is missing
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.02.08.natural.languages;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It should be merged with A.01.04
+";Peter Parslow
+A.02.09.response.language;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Could be merged with A.01.04
+For default language it should use 'inspire_common:DefaultLanguage' as specified in A.02.10
+
+XPath expression can be added here
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.02.10.supported.languages;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+XPATH expression is missing
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.02.11.xml.schema;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Link to the XML schema (not included in the TG) should be provided to test effectively
+";Peter Parslow
+A.03.01.inspire.search.attributes;type:AT,type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+- XPATH expression is missing
+- Test type can be 'automated'
+- Adapt last sentence to:
+'This test is an abstraction of the tests A.3.7 INSPIRE search criteria, A.3.8 Language search criteria and A.3.9 Additional search criteria'
+
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.03.02.language.query.parameters;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The parameter 'Language' could be removed from the test case as it is already present in A.01.04
+Reference to the TG requirement should be added. Also, it needs to be clarified what 'supporting the Query parameter' means. Is it referring to test A.3.4? If yes, what does A.3.2 add?
+";Peter Parslow
+A.03.03.language.search.attribute;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The parameter Language has been already introduced in A.01.04
+
+Add A.01.04 as prerequisite or merge with A.01.04
+";Peter Parslow
+A.03.04.query;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The XPATH expression for the query element is missing (it could be determined from the Discovery Metadata Request)
+# Proposed Change
+Add XPATH reference";Peter Parslow
+A.03.05.inspire;type:AT,type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability:
+Not testable, as one would need to have the list of all records to verify that 'each resource matching the query' is selected.
+Notes:
+The XPATH expression is missing
+
+URL is not descriptive, consider changing to 'inspire.metadata' or 'inspire.md.elements'
+
+# Proposed Change
+Consider rephrashing purpose to make this testable: 'each resource contained in the response'
+
+Add XPATH reference";Peter Parslow
+A.03.06.distributed.search.parameter;type:GE,type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: 
+'Where applicable' in both test purpose and test method is vague and should be specified.
+The XPATH expression for hopCount is missing + information about hopCount attribute?
+Is the test type automated or manual?
+Notes section contains template text
+# Proposed Change
+Specify 'where applicable' in both test purpose and test method
+
+Add XPATH reference
+
+Define whether test can be automated or not
+
+Update notes section";Peter Parslow
+A.03.07.inspire.search.criteria;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It should be merged with A.03.01 or delete A.03.01
+
+";Peter Parslow
+A.03.08.language.search.criteria;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It should be merged with A.03.01 or delete A.03.01
+
+";Peter Parslow
+A.03.09.additional.search.criteria;type:AT ,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It should be merged with A.03.01 or delete A.03.01
+
+";Peter Parslow
+A.03.10.missing.language.filter;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+- A.01.04 and 1.02.09 as prerequisites 
+- I think it is in conflict with A.01.06 where a default language should be provide anyway.
+
+A.02.09 states that if language requested by client is NOT contained in the list of supported languages, the default language is used as defined in \inspire_common:Language
+
+However based on 3.10 this should be equivalent to missing language parameter? -> In other words, the response should contain metadata records of several natural languages, as provided by the INSPIRE Discovery Service.
+";Peter Parslow
+A.03.11.language.filter;type:AT ,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Overlaps with A.01.04
+A.01.04 as prerequisite
+A.02.09 as prerequisite
+";Peter Parslow
+A.03.12.invalid.request;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+A.1.04 as prerequisite
+A.2.09 as prerequisite
+";Peter Parslow
+A.04.01.harvesting.readiness;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test (and requirement) does not belong to the ATS and the TG. It is a requirement on a different subject (some external resource), not the discovery service. Remove test from ATS. There is nothing that can be tested against the discovery service via the CSW API (or if it is clarify what the requirement is that should be tested).
+# Proposed Change
+Remove test";Peter Parslow
+A.04.02.third.party.discovery.services.published;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Unclear what should or could be tested here via the CSW API
+# Proposed Change
+Clarify";Peter Parslow
+A.05.01.third.party.discovery.services.harvestable;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: 'Verification whether all information about the Public Authority's or Third Party's Discovery Service are provided'. The test should specify which information should be provided.
+
+Testability: How to determine the URL of the MS discovery service? Does this need to be provided as an additional parameter to the test run?
+";Peter Parslow
+A.06.03.QoS.availability;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This is not a test for the test framework. Continuous monitoring should be part of the local infrastructure (this applies in general for the other QoS aspects as well, but for them a one-time test in a test run are possible, but not for availability).
+# Proposed Change
+Remove test case from ATS";Peter Parslow
+A.1.1 ISO Metadata Application Profile;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method requires testing OGC standard functionality, which instead shall be delegated to the OGC Tests.
+The Test Method shall instead just inspect the capabilities document and this is not mentioned.
+
+";PwC/ii
+A.1.2 Extended behaviour;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+What is this for?
+";PwC/ii
+A.1.4 Language parameter;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method is wrong:
+'Examine whether the Get Discovery Service Metadata and Discover Metadata operations support the parameter 'language',
+
+No additional language parameter is foreseen for the Discover Metadata operation for which ISO queryable is used.
+";PwC/ii
+A.1.4 Language parameter;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method is wrong:
+'Examine whether the Get Discovery Service Metadata and Discover Metadata operations support the parameter 'language',
+
+No additional language parameter is foreseen for the Discover Metadata operation for which ISO queryable is used.
+";PwC/ii
+A.2.3 Additional search attributes;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Typo in the link:
+A.02.03.addiotional.search.attributes.md
+";PwC/ii
+A.2.3 Additional search attributes;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Typo in the link:
+A.02.03.addiotional.search.attributes.md
+";PwC/ii
+A.2.4 Discovery Service metadata parameters;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test does not take into account that MetadataURL can be present, optionally, also in the long scenario.
+";PwC/ii
+A.2.4 Discovery Service metadata parameters;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test does not take into account that MetadataURL can be present, optionally, also in the long scenario.
+";PwC/ii
+A.2.6 Federated catalogues advertisement;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The validation can only be done knowing the Discovery Scenario chosen when registering the service in the INSPIRE Geoportal.
+";PwC/ii
+A.2.6 Federated catalogues advertisement;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The validation can only be done knowing the Discovery Scenario chosen when registering the service in the INSPIRE Geoportal.
+";PwC/ii
+A.2.7 Federated Discovery Service;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The validation can only be done knowing the Discovery Scenario chosen when registering the service in the INSPIRE Geoportal.
+";PwC/ii
+A.2.7 Federated Discovery Service;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The validation can only be done knowing the Discovery Scenario chosen when registering the service in the INSPIRE Geoportal.
+";PwC/ii
+A.02.TGR2.conformtoAtomSpecification;type:CT,type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Is this only about validation against RelaxNG or checking conformance against RFC 4287?
+# Proposed Change
+If the latter, conformance to RFC 4287 should be a separate ATS and identify the test cases to a level that unambiguously identifies the assertions to test.";Thijs Brentjens
+A.02.TGR2.conformtoAtomSpecification.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the Test method the use of the word 'resolve is misleading'.
+'…resolve the link the referenced Atom feed…'
+";PwC/ii
+A.02.TGR2.conformtoAtomSpecification.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the Test method the use of the word 'resolve is misleading'.
+'…resolve the link the referenced Atom feed…'
+";PwC/ii
+A.03.TGR3.conformtoGeoRSS-Simple;type:CT,type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Is this only about validation of selected elements in an Atom feed against the GeoRSS XML Schema or checking conformance against the GeoRSS specification?
+# Proposed Change
+If the latter, conformance to GeoRSS should be a separate ATS and identify the test cases to a level that unambiguously identifies the assertions to test.";Thijs Brentjens
+A.04.TGR4.conformtoOpenSearch1.1;type:CT,type:GE,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Validation of OpenSearch description document is more than a test case. There is no schema document or similar that could be used.
+(If a single test case would be ok here, there would be no need to break INSPIRE conformance classes down into test cases, just one test case 'test conformance against INSPIRE Technical Guidance' would be sufficient.)
+# Proposed Change
+Define ATS for the OpenSearch description and identify the test cases to a level that unambiguously identifies the assertions to test.";Thijs Brentjens
+A.04.TGR4.conformtoOpenSearch1.1;type:GE,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Open Search 1.1 is not a finalised specification. http://www.opensearch.org/Specifications/OpenSearch/1.1 redirects to Draft 5.
+# Proposed Change
+Clarify which draft version is meant (probably Draft 5).";Thijs Brentjens
+A.06.IR511.TGR6.linkToMetadataForTheService;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'the INSPIRE language request parameters in the Resource Locator to the Atom Download Service Feed URLs must be ignored in the comparison' is unclear. Which comparison? The does not seem to be any comparisons of feed URLs only of metadata record URLs?
+# Proposed Change
+Clarify.";Thijs Brentjens
+A.06.IR511.TGR6.linkToMetadataForTheService;type:CT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'valid gmd:MD_Metadata element' is most likely understood to mean 'schema valid'. 
+# Proposed Change
+If something else is meant, the test should be clarified.";Thijs Brentjens
+A.07.TGR7.selfreference;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Test method seems incomplete.
+# Proposed Change
+Clarify Xpath reference for 'he default language code defined in the OpenSearch description'.";Thijs Brentjens
+A.08.IR222.TGR8.linktoOpenSearchDescription;type:GE,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+How is this different from A.04.TGR4.conformtoOpenSearch1.1?
+# Proposed Change
+Drop one test.";Thijs Brentjens
+A.08.IR222.TGR8.linktoOpenSearchDescription;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Typo in the Note: 'the the'
+# Proposed Change
+Rewrite to 'the'";PwC/ii
+A.08.IR222.TGR8.linktoOpenSearchDescription;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Typo in the Note: 'the the'
+# Proposed Change
+Rewrite to 'the'";PwC/ii
+A.09.TGR9.feedid, A.21.TGR22.datasetFeedId;type:CT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Strictly, the test differs from the requirement. The requirement is not that the id is the same the feed URI provided, but that the id resolves to the same document.
+";Thijs Brentjens
+A.10.IR221.TGR10.rightselement;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Regarding note 1, the requirement is clear that only /feed/rights is covered.
+# Proposed Change
+Remove note 1.";Thijs Brentjens
+A.11.IR221.TGR11.updatedelement,  A.18.TGR19.entryUpdated and A.23.IR221.TGR24.datasetFeedUpdated;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Both tests check for validity of a date, but in a different way. 
+# Proposed Change
+Use the same way to check if a date is valid. NL prefers A.18.TGR19.entryUpdated (and A.23.IR221.TGR24.datasetFeedUpdated), so add to  A.11.IR221.TGR11.updatedelement to check on a valid date with 'year-from-dateTime(xs:dateTime(atom:updated))'
+";PwC/ii
+A.11.IR221.TGR11.updatedelement,  A.18.TGR19.entryUpdated and A.23.IR221.TGR24.datasetFeedUpdated;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Both tests check for validity of a date, but in a different way. 
+# Proposed Change
+Use the same way to check if a date is valid. NL prefers A.18.TGR19.entryUpdated (and A.23.IR221.TGR24.datasetFeedUpdated), so add to  A.11.IR221.TGR11.updatedelement to check on a valid date with 'year-from-dateTime(xs:dateTime(atom:updated))'
+";PwC/ii
+A.11.IR221.TGR11.updatedelement, A.23.IR221.TGR24.datasetFeedUpdated;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'... or too far in the past' is vague for testing.
+# Proposed Change
+Change to '... or before 2012 (first release of the Technical Guidance)'?";Thijs Brentjens
+A.12.IR221.TGR12.contactinformation, A.24.IR221.TGR25.datasetFeedContactinformation;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Unresolved issue: 'A regular expression could be used to validate the email address. Several regular expressions are available; the workgroup could choose one.'
+# Proposed Change
+Delete or resolve.";Thijs Brentjens
+A.13.IR221.TGR13.datasetidentifiers;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+„the dataset identifier code and dataset identifier namespace must be present in the metadata document of the service' is too vague. What does „be present' mean? Included somewhere in the document or in specific elements?
+# Proposed Change
+Clarify.";Thijs Brentjens
+A.14.IR221.TGR14.linksToDatasetMetadata;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Same issue as with A.13.IR221.TGR13.datasetidentifiers ('present in the metadata document of the service and in the Download Service feed'). What does present mean?
+# Proposed Change
+Clarify.";Thijs Brentjens
+A.14.IR221.TGR14.linksToDatasetMetadata;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+gmd:identificationInfo[1]/*/gmd:citation/*/gmd:identifier may refer to multiple nodes.
+
+# Proposed Change
+Clarify how to deal with multiple identifiers in the test.";Thijs Brentjens
+A.14.IR221.TGR14.linksToDatasetMetadata;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+gmd:identificationInfo[1]/*/gmd:citation/*/gmd:identifier may be gmd:MD_Identifier, RS_Identifier or some other element.
+# Proposed Change
+Clarify how to compare identifiers that use different data types.";Thijs Brentjens
+A.15;type:CR,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Attribute: type=""application/Atom+xml"" is required. If this Attribute is part of the link-tag the link does not work in the Internet Explorer! The examples for INSPIRE-Atom-Feed contain the type-Attribute in the link-tag, too. And also it does not work in IE. That not the sense of interoperability. If the type-Attribute will delete the link work in the IE.
+# Proposed Change
+Cancel the test Attribute type in the link-tag and Change the requirement.";PwC/ii
+A.15;type:GE,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Browser problems for IE 11 if type=""application/atom+xml"" is included in link (browser shows no link). 
+";PwC/ii
+A.18.TGR19.entryUpdated;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Why is the updated test different from A.11.IR221.TGR11.updatedelement? (Any year will work here.)
+# Proposed Change
+Consider aligning tests.";Thijs Brentjens
+A.25.IR31.TGR26.datasetFeedDownloadLink, A.28.IR31.TGR29.datasetFeedDownloadLinkDetails;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+These seem to overlap significantly.
+# Proposed Change
+Consider to merge both test cases.";Thijs Brentjens
+A.26.IR313.TGR27.separateEntriesCRSFormat;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'Find and retrieve the all the Download Service Feed documents containing an entry pointing to this Dataset Feed'.
+Why 'all' the Download Service feed documents? As the test object is 'a' Download Service this test should only check the feed of the Download Service under test.
+Consistent with this, the Download Service feed document accessed earlier must be used not any other feed document.
+# Proposed Change
+'For each category element in the Download Service feed entity, which included the link to the Dataset feed document, check that at least one entry exists in the Dataset feed containing a category element with an identical term attribute.'
+";Thijs Brentjens
+A.29.IR311.TGR31.languageForDownloadLink;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Unresolved issue: 'Is the hreflang attribute still mandatory if data in only 1 language is provided? If not, this ATS is not automatically testable and the ATS should be removed.'
+# Proposed Change
+Clarify. ";Thijs Brentjens
+A.34.IR222.TGR39.provideOpenSearchDescription ;type:GE,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case is not referenced from the overview and not testable.
+# Proposed Change
+Remove test case.";Thijs Brentjens
+"A.36.TGR41.openSearchGenericSearchQueries,
+A.37.IR4.TGR42.openSearchUrlDescribeSpatialDataset";type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+„test if it provides a document with content-type xxx'' is vague. Is this a test on the HTTP header of the response or in some way a test of the response.
+
+# Proposed Change
+Clarify. Probably a test on the HTTP header of the response is meant.";Thijs Brentjens
+A.39.IR3.IR4.TGR44.openSearchQueryExample;type:CT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+valid HTTP codes: '200,206,301,303,303'
+# Proposed Change
+Change first 303 to 302.";Thijs Brentjens
+Maybe a test for requirement 52 / 61 could be adde...;type:AT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Maybe a test for requirement 52 / 61 could be added by testing that for each feature type there is exactly one //wfs:FeatureType/wfs:MetadataURL and all values must be identical.
+However, the TG does not seem to require this, so this would require a TG update first.
+# Proposed Change
+-";Thijs Brentjens
+README.md;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+A typo: the section TG Requirement Coverage contains (in the first line) a link to [TG VS] which should refer to [TG DL].
+# Proposed Change
+Change link to TG DL";PwC/ii
+README.md;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+A typo: the section TG Requirement Coverage contains (in the first line) a link to [TG VS] which should refer to [TG DL].
+# Proposed Change
+Change link to TG DL";PwC/ii
+Numbering of test cases jumps from A.04 to A.06...;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Numbering of test cases jumps from A.04 to A.06
+# Proposed Change
+Update numbering of test cases";Thijs Brentjens
+Consider if the prerequisites should be mentioned ...;type:GE,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Consider if the prerequisites should be mentioned in each test since they have to be tested anyway.
+# Proposed Change
+Remove the references to the OGC test or add them also to the other ATS (e.g. WMS, WMTS). In any case, do it in the same way for all ATS.";PwC/ii
+A.02.IR2.IR4.TGR49.TGR50.TGR51.predefinedStoredQuery;type:CT,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'For each combination of supported CRS, supported language, SpatialDataSetIdentifier ID code and SpatialDataSetIdentifier Namespace'
+The mechanism to determine the 'supported CRS' is problematic as the CRS information may differ from feature type to feature type. It is unclear in how far that is an issue in practice, but a conformant service may specify different CRSs per feature type.
+# Proposed Change
+See comment. As the TG is unclear, the requirement should be clarified in the TG first.";Thijs Brentjens
+A.02.IR2.IR4.TGR49.TGR50.TGR51.predefinedStoredQuery;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method description contains a subtle bug which generates too many permutations since SpatialDataSetIdentifier ID code and SpatialDataSetIdentifier Namespace shall be considered as a whole:
+'For each combination of supported CRS, supported language, SpatialDataSetIdentifier ID code and SpatialDataSetIdentifier Namespace: perform a GetFeature request'
+
+In addition, it does not really consider that a dataset could have multiple unique resource identifiers.
+
+";PwC/ii
+A.02.IR2.IR4.TGR49.TGR50.TGR51.predefinedStoredQuery;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method description contains a subtle bug which generates too many permutations since SpatialDataSetIdentifier ID code and SpatialDataSetIdentifier Namespace shall be considered as a whole:
+'For each combination of supported CRS, supported language, SpatialDataSetIdentifier ID code and SpatialDataSetIdentifier Namespace: perform a GetFeature request'
+
+In addition, it does not really consider that a dataset could have multiple unique resource identifiers.
+
+";PwC/ii
+A.03.IR221.TGR53.serviceMetadata;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method is not consistent with the purpose. The test method checks that both all metadata elements are in the extended capabilities and that there is a MetadataURL pointing to a valid Metadata document.
+# Proposed Change
+Change test method to express the 'EITHER ... OR'.
+";Thijs Brentjens
+A.03.IR221.TGR53.serviceMetadata;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'valid Metadata document' is most likely understood to mean 'schema valid'. If something else is meant, which is likely as schema validity does not make the metadata document conformant with the service metadata requirements, the test should be clarified.
+# Proposed Change
+Clarify meaning of 'valid'.";Thijs Brentjens
+A.03.IR221.TGR53.serviceMetadata;type:CT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Note also that the TG seems to be incorrect and the reference to table 4 should be to table 19.
+# Proposed Change
+Update the TG to reference table 19, not table 4.";Thijs Brentjens
+A.03.IR221.TGR53.serviceMetadata;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+From the test method it is not clear how to validate the metadata document for being valid. Needs more clarification.
+# Proposed Change
+Specify how metadata validation must be done. For example: validate the metadata document to the XML schema.";PwC/ii
+A.03.IR221.TGR53.serviceMetadata;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+From the test method it is not clear how to validate the metadata document for being valid. Needs more clarification.
+# Proposed Change
+Specify how metadata validation must be done. For example: validate the metadata document to the XML schema.";PwC/ii
+A.03.IR221.TGR53.serviceMetadata (page 8);type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the Purpose you can choose between EITHER metadata to be linked to via an inspire_common:MetadataURL OR put all metadata element in ExtendedCapabilities.
+In the test, it says to test all metadata elements in ExtendedCapabilities irrespective of inspire_common:MetadataURL is there.
+# Proposed Change
+To conform with the purpose of the test, change position of the two last check points, 
+
+- If a inspire_common:MetadataURL is provided, request the Metadata document with this URL. Check if the response is a valid Metadata document.
+- Else, check if all mandatory metadata elements as specified in Table 4 of the TG exist in the ExtendedCapabilities section.
+
+Also clarify how to validate the Metadata document in the first check above; the schema to be used and/or that it should conform with Table 4.";PwC/ii
+A.03.IR221.TGR53.serviceMetadata (page 8);type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the Purpose you can choose between EITHER metadata to be linked to via an inspire_common:MetadataURL OR put all metadata element in ExtendedCapabilities.
+In the test, it says to test all metadata elements in ExtendedCapabilities irrespective of inspire_common:MetadataURL is there.
+# Proposed Change
+To conform with the purpose of the test, change position of the two last check points, 
+
+- If a inspire_common:MetadataURL is provided, request the Metadata document with this URL. Check if the response is a valid Metadata document.
+- Else, check if all mandatory metadata elements as specified in Table 4 of the TG exist in the ExtendedCapabilities section.
+
+Also clarify how to validate the Metadata document in the first check above; the schema to be used and/or that it should conform with Table 4.";PwC/ii
+A.04 and the following;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Prerequisites: A.01 already contains the both mentioned OGC WFS tests.
+# Proposed Change
+Remove the redundant test cases.";PwC/ii
+A.04.TGR55.TGR56.language.affects.capabilities;type:CT,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'If the returned resource can be parsed as a valid XML document and if the document passes all the tests listed as prerequisites for this test'
+Why do the tests need to be executed again, if they have been tested before ('prerequisites')?
+The test cases and conformance classes in 'prerequisites' have a WFS 2.0.0 as the test object, while this statement is worded as if these would be test cases and conformance classes on a Capabilities document.
+# Proposed Change
+Either drop the prerequisites and explicitly state the steps/assertions or omit the sentence.";Thijs Brentjens
+A.04.TGR55.TGR56.language.affects.capabilities;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+VERSION is not a parameter of the GetCapabilities request.
+# Proposed Change
+Change to ACCEPTVERSIONS.";Thijs Brentjens
+Maybe a test for requirement 52 / 61 could be adde...;type:AT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Maybe a test for requirement 52 / 61 could be added by testing that for each feature type there is exactly one //wfs:FeatureType/wfs:MetadataURL and all values must be identical.
+However, the TG does not seem to require this, so this would require a TG update first.
+# Proposed Change
+-";Thijs Brentjens
+It contains no tests....;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It contains no tests.
+";PwC/ii
+It contains no tests....;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It contains no tests.
+";PwC/ii
+A.1.5;type:ed,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the note there is some part does not really make sense i.e. 'The list of codes in the Technical Guidelines for INSPIRE metadata and Technical Guidance for INSPIRE Discovery Services does not comply with each. The Technical Guidance for INSPIRE Discovery Services also provides codes for the EFTA countries while Technical Guidelines for INSPIRE metadata provides codes only for the EU Member States' to be even more specific what does not comply with each (see the word in bold)
+# Proposed Change
+Since we do not understand the note we cannot provide any proposed change.";PwC/ii
+A.1.5;type:ed,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In note 1one cannot help thinking it might be a good idea to get the two documents in question synchronized
+# Proposed Change
+Synchronize the two documents.";PwC/ii
+A.1.6;type:ed,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The purpose and the test method are word to word identical, except for the very first word. So it is difficult to see how this method can be implemented. This comment is also valid for several other tests described in this document. 
+# Proposed Change
+Describe the test method better and more in detail.";PwC/ii
+A.2.4;type:ed,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the purpose the word 'properly' is used. This is a vague word to use in the purpose of a test. The next question is then what is meant with 'properly'.
+# Proposed Change
+Tighten up the purpose.";PwC/ii
+A.2.5;type:ed,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Why is the note included here? – It seems more like an comment received earlier on.
+# Proposed Change
+Remove the note.";PwC/ii
+A.2.8;type:ed,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+When reading A.1.4 and A.1.5 this test seems to be covered.
+# Proposed Change
+Delete the test.";PwC/ii
+A.3.1;type:ed,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the notes it is stated that there is some mismatch between the legal documents and the guidance document. This must be sorted out before handling the tests
+# Proposed Change
+Sort out the mismatch between the documents and then reconsider this test.";PwC/ii
+A.3.3;type:ed,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The question is what is the difference between this test and A.3.2?
+";PwC/ii
+A.3.7;type:ed,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Where can the tables referred to in the Purpose and the Notes can be found? 
+";PwC/ii
+A.3.8;type:ed,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the clause 'Prerequisites' there is a question. One answer to that question could be how about all the tests that has something to do with language,
+";PwC/ii
+A.6.1;type:ge,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There will be a strong need for developing some standard test to examine if the purpose is fulfilled. 
+";PwC/ii
+A.04.IR16.IR17.link.to.get.harmonised.service.metadata;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisite does not make sense because:
+- it puts a condition on the metadata document that will be fetched during the test.The condition it describes should be moved to the Test Method.
+-it assumes that what comes back is an ISO 19139 document while it could be a Capabilities document.
+The 'equivalent' for Network Services is the Get Network Service Metadata Response document which is often an OGC Capabilities document.
+
+
+";PwC/ii
+A.04.IR16.IR17.link.to.get.harmonised.service.metadata;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisite does not make sense because:
+- it puts a condition on the metadata document that will be fetched during the test.The condition it describes should be moved to the Test Method.
+-it assumes that what comes back is an ISO 19139 document while it could be a Capabilities document.
+The 'equivalent' for Network Services is the Get Network Service Metadata Response document which is often an OGC Capabilities document.
+
+
+";PwC/ii
+The Prerequisites section of each test contains a ...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites section of each test contains a verbose requirement validity against xml schema.
+Since the xml schema is now the standard ISO 19139, it should simply reference the ats-metadata requirement.
+";PwC/ii
+The Prerequisites section of each test contains a ...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites section of each test contains a verbose requirement validity against xml schema.
+Since the xml schema is now the standard ISO 19139, it should simply reference the ats-metadata requirement.
+";PwC/ii
+This ATS clearly needs more work. In general, the ...;type:GE,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This ATS clearly needs more work. In general, the tests are not implementable as they are.
+Only IR references are provided. All tests should be against requirements stated in a TG.
+";michellutz
+"All regulations on ""Metadata for interoperability""...";type:GE,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+All regulations on ""Metadata for interoperability"" (see following issues) aim at datasets and series and only when applying to IR 1089/2010.
+How to define that? Conformity statement citing IR 1089/2010 with pass= TRUE?
+Or are these regulations relevant for all INSPIRE metadata regardless the level of fulfilling IR 1089/2010?
+";PwC/ii
+A.01.IR13.1.crs;type:ED,type:,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: the hyperlink of 'RS_Identifier 'does not point to the right source  
+In addition 'It is suggested ...' or ""the test can grab ...' is not an unambiguous description of a test.
+Testability: Also, it is unclear how to 'validate the coordinate reference system against the advertised system'?
+The data specifications provide http URIs for all default CRSs. Is this relevant for this test (note that http://www.opengis.net/def/crs/EPSG/0/4326 is not one of them)?
+";michellutz
+A.01.IR13.1.crs;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: The identifier should be checked against a code list of identifiers present in common registry (see inspire Data specification template V3.0rc3) but no official registry list is presented.
+";michellutz
+A.02.IR13.2.trs;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: there is no code list for temporal reference systems mandated by INSPIRE.
+# Proposed Change
+See also MIWP-8 issue 2323.";michellutz
+A.03.IR13.3.enc;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: 'the format may be deduced' is too generic expression, it should either explicit or express with a code a list.
+# Proposed Change
+Update the INSPIRE data specifications template (Section 8.2.3) and refer to the INSPIRE media type register (See MIWP-8 issue 2324). Update the test case accordingly.";michellutz
+A.04.IR13.4.topo;type:CT,type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not clear from the TG how topological consistency is encoded.
+It is not clear from the test case how it can be tested.
+";michellutz
+A.04.IR13.4.topo;type:CT,type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: As indicated, it is not clear how to ascertain whether 'the data set includes types from the Generic Network Model and does not assure centreline topology (connectivity of centrelines) for the network.'
+";michellutz
+A.05.IR13.5.char.enc;type:CT,type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: The test should clarify that this only works if the resource can be retrieved online and is a textual resource.  
+Ambiguity: The test should clarify for each possible resource how the character encoding of a resource can be verified. If the character encoding is not included in the retrieved resource, no claim can be made about the used character encoding. For example, in XML, the character encoding prolog is not mandatory (i.e. <?xml encoding='UTF-8'?>).
+";michellutz
+A.1 Coordinate Reference System;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coordinate Reference System is one of the mandatory elements in ""Metadata for interoperability"" for datasets and series.
+# Proposed Change
+There should be at least a test on pure existence for datasets and series if the resource is already in focus of IR 1089/2010.";PwC/ii
+A.1 Coordinate Reference System;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test purpose is to evaluate the RS_Identifier and not the description of the CRS.
+# Proposed Change
+Test purpose should be changed in order to reflect what is actually tested, e.g. 'Qualified URL in the given RS_Identifier'.";PwC/ii
+A.1 Coordinate Reference System;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not clear how a grabed CRS can be validated against the advertised system. Additionally, this is not covered by the test purpose which only check the existence of a qualified URL.
+# Proposed Change
+Remove this sentence.";PwC/ii
+A.1 Coordinate Reference System;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test described can be required if another test is added; the conformity of the dataset ,if true then the described test is required, because the CRS is a requirement in IR SDSS
+# Proposed Change
+Add a test to check if the dataset is harmonised.
+Require  the described test if the dataset is harmonised";PwC/ii
+A.1 Coordinate Reference System;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Please make this test conform with the proposed implementation in the new TG MD
+";PwC/ii
+A.1 Coordinate Reference System;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test described can be required if another test is added; the conformity of the dataset ,if true then the described test is required, because the CRS is a requirement in IR SDSS
+# Proposed Change
+Add a test to check if the dataset is harmonised.
+Require  the described test if the dataset is harmonised";PwC/ii
+A.1 Coordinate Reference System;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Please make this test conform with the proposed implementation in the new TG MD
+";PwC/ii
+A.2, A.3...;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Use 'ISO' for ISO standards, not 'iso'.
+# Proposed Change
+Change.";PwC/ii
+A.3 Encoding;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Encoding is one of the mandatory elements in ""Metadata for interoperability"" for datasets and series.
+# Proposed Change
+There should be at least a test on pure existence for datasets and series if the resource is already in focus of IR 1089/2010.";PwC/ii
+A.4 Topological Consistency;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Not the correctness is tested as written in the purpose, but the existence of a topological consistence metadata element.
+# Proposed Change
+Correct the purpose.";PwC/ii
+A.5 Character Encoding;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Character Encoding is one of the mandatory elements in ""Metadata for interoperability"" for datasets and series.
+# Proposed Change
+There should be at least a test on pure existence for datasets and series if the resource is already in focus of IR 1089/2010.";PwC/ii
+A.5 Character Encoding;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not clear what metadata element is meant by 'CharEnc'.
+ 
+# Proposed Change
+Use only terms and abbreviations according to the IR and TG.";PwC/ii
+A.5 Character Encoding;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Grab the resource. Check the encoding. If the resource is not encoded based on UTF-8, validate if the appropriate encoding is provided in CharEnc Not applicable to services
+
+The dataset is only available through the downloadservice, but here is stated it is not applicable to services.
+# Proposed Change
+Delete this part, is not executable";PwC/ii
+A.5 Character Encoding;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Grab the resource. Check the encoding. If the resource is not encoded based on UTF-8, validate if the appropriate encoding is provided in CharEnc Not applicable to services
+
+The dataset is only available through the downloadservice, but here is stated it is not applicable to services.
+# Proposed Change
+Delete this part, is not executable";PwC/ii
+A.6 Spatial Representation Type;type:CT,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test should be limited to the check if an appropriate value of the codelist has been chosen. A dataset should be considered INSPIRE conformant if such an element is provided.
+# Proposed Change
+Skip the test on validation of the matching of the given with the advertised representation since this is considered out of scope of conformance testing.";PwC/ii
+A.6 Spatial Representation Type;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Grab the resource and check the spatial representation. Validate if it matches the advertised representation.
+# Proposed Change
+Delete this part, is not executable";PwC/ii
+A.6 Spatial Representation Type;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Grab the resource and check the spatial representation. Validate if it matches the advertised representation.
+# Proposed Change
+Delete this part, is not executable";PwC/ii
+Open issues;type:CT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The objective of ATS and testing is to ensure INSPIRE compliant datasets. Therefore, only the requirements should be tested not the recommendations, too. If a recommendation is considered crucial for interoperability it should be upgraded to a requirement. Then you can add a corresponding ATS to this issue.
+# Proposed Change
+Do not add recommendations to ATS if not really necessary for achieving interoperable datasets.
+";PwC/ii
+Open issues;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testing should only cover a test if the required metadata elements are correctly provided. This can be done automatically. Further test methods aiming the feasibility of the thematic content seem to be too advanced.
+# Proposed Change
+Keep the testing cases on the level of correctly given elements.";PwC/ii
+Open Issues: test scope;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Scope should be the metadata only. Testing the data itself is very hard or practically impossible in many cases.
+";PwC/ii
+Open Issues: test scope;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Scope should be the metadata only. Testing the data itself is very hard or practically impossible in many cases.
+";PwC/ii
+A.01.IR06.IR07.supported.crses.as.list;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Note is misleading because there is no requirement about which CRSs shall be supported by a SDS. The only requirement is to list all the CRSs supported by the service.
+'The list of the allowed INSPIRE CRS identifiers is only given as a recommendation, so it's not possible to automatically validate if the CRSes provided fulfill the INSPIRE CRS criteria (ETRS89 based for data inside Europe, ITRS based otherwise).'
+";PwC/ii
+A.01.IR06.IR07.supported.crses.as.list;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The XPath contains a pipe operator which means an OR condition.
+The test method should instead tell which information is relevant, mandatory and which takes precedence over the other.
+
+/gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/(gmx:Anchor/@xlink:href|gco:CharacterString)
+";PwC/ii
+A.02.IR08.extension.for.QoS.declared.availability;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+- The Prerequisites still references the now obsolete profile schema.
+
+-The XPath still references the now obsolete profile schema. 
+";PwC/ii
+A.03.IR09.extension.for.QoS.declared.performance.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Wrong title:
+A.02.IR08.extension.for.QoS.declared.performance
+";PwC/ii
+A.03.IR09.extension.for.QoS.declared.performance.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+- The Prerequisites still references the now obsolete profile schema.
+
+-The XPath still references the now obsolete profile schema.
+";PwC/ii
+A.04.IR10.extension.for.QoS.declared.capacity.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Wrong title:
+A.02.IR08.extension.for.QoS.declared.capacity
+";PwC/ii
+A.04.IR10.extension.for.QoS.declared.capacity.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+- The Prerequisites still references the now obsolete profile schema.
+
+-The XPath still references the now obsolete profile schema.
+";PwC/ii
+A.05.IR11.custodian.contact.point;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Notes:
+'…The XPath test also requires…'
+Instead of saying that, the test should say that the Responsible Party must have passed also the corresponding test in the ats-metadata.
+";PwC/ii
+A.06.IR08.DQ_ConceptualConsistency.for.QoS.declared.availability.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+I agree the Notes
+";PwC/ii
+A.07.IR09.DQ_ConceptualConsistency.for.QoS.declared.performance;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+I agree the Notes
+";PwC/ii
+A.08.IR10.DQ_ConceptualConsistency.for.QoS.declared.capacity;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+I agree the Notes
+";PwC/ii
+A.09.IR01.SDS.SV_ServiceIdentification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+- The Prerequisites still references the now obsolete profile schema.
+
+-The XPath still references the now obsolete profile schema.
+";PwC/ii
+A.10.IR01.DQ_DomainConsistency.report.for.classification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The following Note is, though formally correct, quite an overkill. Why can't people just declare the highest conformance class?
+It's assumed, that separate gmd:report elements are provided for each passed classification invocable, interoperable and harmonised that the service conforms to. Otherwise the tests for these ""super class"" CCes will not pass.
+";PwC/ii
+The Prerequisites section of each test contains a ...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites section of each test contains a verbose requirement validity against xml schema.
+Since the xml schema is now the standard ISO 19139, it should simply reference the ats-metadata requirement.
+";PwC/ii
+A.01.IR01.SDS.SV_ServiceIdentification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Note still mentions 'the SDS metadata extension schema'
+";PwC/ii
+A.01.IR01.SDS.SV_ServiceIdentification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Note still mentions 'the SDS metadata extension schema'
+";PwC/ii
+A.02.IR02.IR03.at.least.one.recource.locator;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is a typo in the name: 'recource' instead of 'resource'
+";PwC/ii
+A.02.IR02.IR03.at.least.one.recource.locator;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method is should mention that only the gmd:CI_OnlineResource with a specific description are considered.
+In addition, the XPath uses the gmd:function element while the TG prescribes gmd:description
+";PwC/ii
+A.02.IR02.IR03.at.least.one.recource.locator;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is a typo in the name: 'recource' instead of 'resource'
+";PwC/ii
+A.02.IR02.IR03.at.least.one.recource.locator;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method is should mention that only the gmd:CI_OnlineResource with a specific description are considered.
+In addition, the XPath uses the gmd:function element while the TG prescribes gmd:description
+";PwC/ii
+The Prerequisites section of each test contains a ...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites section of each test contains a verbose requirement validity against xml schema.
+Since the xml schema is now the standard ISO 19139, it should simply reference the ats-metadata requirement.
+";PwC/ii
+The 'SDS' part in the test names (A.03.IR05.SDS) d...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The 'SDS' part in the test names (A.03.IR05.SDS) does not apply anymore as the standard ISO19139 schemas are used
+";PwC/ii
+The Prerequisites section of each test contains a ...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites section of each test contains a verbose requirement validity against xml schema.
+Since the xml schema is now the standard ISO 19139, it should simply reference the ats-metadata requirement.
+";PwC/ii
+The 'SDS' part in the test names (A.03.IR05.SDS) d...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The 'SDS' part in the test names (A.03.IR05.SDS) does not apply anymore as the standard ISO19139 schemas are used
+";PwC/ii
+A.01.validate;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The ATS requires validation against three different XSD schema versions (at least one should pass). It is not clear how to determine which schema to use to validate the document.
+# Proposed Change
+The ATS should perhaps clarify that this is on the basis of the declared namespaces in the XML document (see also issue 10 on GitHub), i.e.:
+If the document declares http://www.isotc211.org/2005/srv, use http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd.
+But otherwise, it is unclear what to use. The official schema for http://www.isotc211.org/2005/gmd is http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/gmd.xsd or http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd, but in the context of Discovery services, INSPIRE also uses http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd. It is unclear how to select the schema document. Which schema document does the MD TG require?";Paul van Genuchten
+A.01.validate;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'...against ISO 19139 version 2005-DIS with...' is not a correct reference
+# Proposed Change
+Correct the reference.";PwC/ii
+A.01.validate;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+For validation only ISO/TS 19139:2007 with GML 3.2.1 should be used. In order to achieve interoperability only one encoding should be used, and this should be the final TS, not the draft.
+# Proposed Change
+Change the ATS and the TG MD accordingly.";PwC/ii
+A.02.title;type:CR,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is still an open question whether to include this test case, as there is no explicit requirement in the technical guidelines. 
+# Proposed Change
+It is proposed to keep this test case, and change the technical guidelines (TG MD) including this requirement.";Antonio Rotundo
+A.02.title;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The purpose is not formulated correctly: 
+'Purpose: The title by which the cited resource is known'
+# Proposed Change
+Change to: 
+'Purpose: Checks that a resource title is provided'";PwC/ii
+A.03.abstract;type:CR,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is still an open question whether to include this test case, as there is no explicit requirement in the technical guidelines. 
+# Proposed Change
+It is proposed to keep this test case, and change the technical guidelines (TG MD) including this requirement.";Antonio Rotundo
+A.04.IR01.IR02.hierarchy;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The purpose is not formulated correctly: 
+'Purpose: Type of the cited resource must be provided'
+# Proposed Change
+Change to: 
+'Purpose: Checks that a resource type is provided'";PwC/ii
+A.04.IR01.IR02.hierarchy;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The sentence 'To be relevant for INSPIRE the value should be either 'dataset', 'service' or 'series'' does not make it clear when the test fails.
+# Proposed Change
+Change the sentence to: 'The test succeeds if the value is either 'dataset', 'service' or 'series'' and it otherwise fails.";PwC/ii
+A.04.IR01.IR02.hierarchy;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the sentence:
+ 'Checks if a resource type (hierarchyLevel) is provided and is taken from the MD_ScopeCode codelist.'
+MD_ScopeCode is a link that points to the INSPIRE Codelist(*) (**)
+However, the MD TG maps the INSPIRE values to the already existing original ISO values.
+So the codelist values are simply a subset of those defined in B.5.25 MD_ScopeCode <<CodeList>>
+
+(*)The INSPIRE codelist contains the value 'services' that was amended into 'service' in the MD Regulation Corrigendum).
+(**) The INSPIRE codelist makes available codes that are absolute HTTP URIs (e.g. http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset ) while in ISO 19139 you need just the term 'dataset'. The INSPIRE codelist does not make the term available on its own.
+# Proposed Change
+Remove the link to the INSPIRE Codelist and reference instead table B.5.25 MD_ScopeCode <<CodeList>> of ISO 19115.
+";PwC/ii
+A.05.IR14.ds.keyword;type:ED,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Another prerequisite is test case A.04.
+# Proposed Change
+Add the test case as a prerequisite.";Antonio Rotundo
+A.05.IR14.ds.keyword;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coverage: In theory, the single keyword referring to the INSPIRE data theme could also be a text value, in each of the official languages. Is it OK to assume that in practice all metadata providers will use the language-neutral code?
+";Antonio Rotundo
+A.05.IR14.ds.keyword;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+What happens if there's no descritiveKeywords block citing INSPIRE GEMET at all? I understand the current description of the test as follows: the test will work for each block and will skip to the next block (without failing) if no reference to INSPIRE GEMET is given. It's allowed to have additional descriptiveKeyword blocks citing nothing or other concepts.
+# Proposed Change
+""If at least one descriptiveKeywords block references INSPIRE GEMET or any duplicate (...) and at least one keyword from that source is found in this block, the test succeeds, otherwise it will fail.""";PwC/ii
+A.05.IR14.ds.keyword;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The reference should be 2.4 and not 2.2.3.
+# Proposed Change
+Check and change.";PwC/ii
+A.05.IR14.ds.keyword;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+How can be checked if any duplicate of that thesaurus is referenced? This can only if they are known 
+# Proposed Change
+Delete this part of the check";PwC/ii
+A.05.IR14.ds.keyword;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Based on the requirements in the TG, this is an indirect requirement;
+-you shall provide a keyword that describe the relevant INSPIRE Spatial Data Theme (req 14)
+-If the keyword value originates from a controlled vocabulary
+(thesaurus, ontology), for example GEMET - Concepts, the citation of
+the originating controlled vocabulary shall be provided.(req17)
+
+the text in the TG 'MD The titles and definitions of all 34 INSPIRE Spatial Data Themes have been integrated into a
+dedicated branch of the General Environmental Multilingual Thesaurus (GEMET) in the 24
+official Community languages (see http://www.eionet.europa.eu/gemet/inspire_themes). ' informs that there is a thesaurus available.
+The test if this thesaurus is referenced is practical.
+
+# Proposed Change
+Should be defined better in the new version of TG MD ";PwC/ii
+A.05.IR14.ds.keyword;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+How can be checked if any duplicate of that thesaurus is referenced? This can only if they are known 
+# Proposed Change
+Delete this part of the check";PwC/ii
+A.05.IR14.ds.keyword;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Based on the requirements in the TG, this is an indirect requirement;
+-you shall provide a keyword that describe the relevant INSPIRE Spatial Data Theme (req 14)
+-If the keyword value originates from a controlled vocabulary
+(thesaurus, ontology), for example GEMET - Concepts, the citation of
+the originating controlled vocabulary shall be provided.(req17)
+
+the text in the TG 'MD The titles and definitions of all 34 INSPIRE Spatial Data Themes have been integrated into a
+dedicated branch of the General Environmental Multilingual Thesaurus (GEMET) in the 24
+official Community languages (see http://www.eionet.europa.eu/gemet/inspire_themes). ' informs that there is a thesaurus available.
+The test if this thesaurus is referenced is practical.
+
+# Proposed Change
+Should be defined better in the new version of TG MD ";PwC/ii
+A.05.IR14.ds.keyword.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The purpose is not formulated correctly: 
+'Purpose: Keyword for datasets. If the resource is a dataset or a dataset series, at least one keyword must originate from the INSPIRE theme of the GEMET Thesaurus'
+# Proposed Change
+Change to:
+'Purpose: If the resource is a dataset or a dataset series, it checks that at least one keyword originating from the INSPIRE theme of the GEMET Thesaurus is provided'";PwC/ii
+A.05.IR14.ds.keyword.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The term 'resource type' in the test method description is not hyperlinked.
+'Test method If the type of the resource is not dataset or series, this test is omitted.'
+# Proposed Change
+Change the sentence to:
+'Test method
+If the resource type is not dataset or series, this test is omitted.'
+
+Make 'resource type' a hyperlink to ([hierarchyLevel](#hierarchyLevel))";PwC/ii
+A.05.IR14.ds.keyword.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method does not explain how to reference a thesaurus and does not link to another ATS that does.
+It does not link to the ATS which says that per must be maximum one instance of descriptiveKeywords per thesaurus.
+# Proposed Change
+Add prerequisite A.15.IR19.kws-in-vocab: (Keyword values originating from a single version of a single controlled vocabulary shall be grouped in a single instance) 
+
+Reference A.14.IR16.IR17.IR18.vocab
+";PwC/ii
+A.05.IR14.ds.keyword.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method allows alternative thesauri while the MD TG asks for the GEMET one.
+'
+Test method If the type of the resource is not dataset or series, this test is omitted.
+ The test should check for each descriptiveKeywords block if it references either http://www.eionet.europa.eu/gemet/inspire_themes or any duplicate of that thesaurus (eg http://inspire.ec.europa.eu/theme).
+'
+
+# Proposed Change
+Remove reference to alternative thesauri.
+Rephrase the test method as follows:
+'
+Test method
+The test looks for an instance of descriptiveKeywords which [references]( A.14.IR16.IR17.IR18.vocab)  the http://www.eionet.europa.eu/gemet/inspire_themes thesaurus.
+'
+
+ 
+";PwC/ii
+A.05.IR14.ds.keyword.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method does not specify in which language to express an inspire theme or if it has to be a language neutral name like a URI:
+'If a block is referencing that thesaurus the test should check if at least one keyword is available and it matches with a concept in the thesaurus.'
+The MD Regulation requires a theme as it appears in the Annex I, II, III of the INSPIRE Directive
+# Proposed Change
+Rephrase the test method as in the previous point and add the part in bold:
+
+'
+Test method
+The test looks for an instance of descriptiveKeywords which [references]( A.14.IR16.IR17.IR18.vocab)  the http://www.eionet.europa.eu/gemet/inspire_themes thesaurus.
+The test succeeds if such instance is found and if it contains at least one keyword as it appears in the specified thesaurus in the language of the metadata.
+'
+";PwC/ii
+A.06.IR15.srv.keyword;type:ED,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Another prerequisite is test case A.04, needed to determine whether the resource is a service.
+# Proposed Change
+Add the test case as a prerequisite.";Antonio Rotundo
+A.06.IR15.srv.keyword;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The reference should be 2.4 and not 2.2.3.
+# Proposed Change
+Check and change.";PwC/ii
+A.06.IR15.srv.keyword;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method says for a service there must be at least one keyword originating from EU commission regulation No. 1205/2008, Annex part D, No. 4. The regulation says that 'The keywords are based on the geographic services taxonomy of EN ISO 19119', but it should also say that  that the language neutral name shall be used
+# Proposed Change
+Add to the test method the part in bold:
+'If the resource is a service, at least one keyword must originate from EU commission regulation No. 1205/2008, Annex part D, No. 4.
+They keyword must match the language neutral name'.";PwC/ii
+A.06.IR15.srv.keyword;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method says for a service there must be at least one keyword originating from EU commission regulation No. 1205/2008, Annex part D, No. 4. The regulation says that 'The keywords are based on the geographic services taxonomy of EN ISO 19119' but it should also say a thesaurus must be specified pointing to the relevant thesaurus, be it the MD Regulation, ISO 19119 or the INSPIRE Codelist Registry. I think the MD Regulation would be fine.
+# Proposed Change
+Add to the test method the part in bold:
+If the type of the resource is not service, this test is omitted.
+'If the resource is a service, at least one keyword must originate from EU commission regulation No. 1205/2008, Annex part D, No. 4.
+They keyword must match the language neutral name
+The test should check for each descriptiveKeywords block if it references the …(<appropriate thesaurus>). If a block is referencing that thesaurus the test should check if at least one keyword is specified, which matches a concept in the thesaurus.
+If such a keyword is found the test succeeds, otherwise it fails.
+'";PwC/ii
+A.07.IR05.IR06.ds.identification;type:CR,type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: The discussion seems to be still ongoing: 'In case of MD_identifier, discussion is ongoing on how to match this element against a namespace-identifier in a capabilities document/service metadata.' (see issue MIWP-8 (L) Unique Resource Identifier)
+";Antonio Rotundo
+A.07.IR05.IR06.ds.identification;type:ED,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: gmd:identificationInfo[1]/*/gmd:citation/*/gmd:identifier may refer to multiple nodes. It should be clarified how to deal with multiple identifiers in the test.
+
+Note: Another prerequisite is test case A.04.
+# Proposed Change
+Clarify ambiguity and add test case as a prerequisite.";Antonio Rotundo
+A.07.IR05.IR06.ds.identification;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method should only include the actual requirments. A reference to an ongoing discussion on how to match MD_Identifier against a namespace-identifier is not applicable here.
+# Proposed Change
+Change the test method accordingly.";PwC/ii
+A.07.IR05.IR06.ds.identification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The purpose is not completely accurate. It should specify that at least one identifier is needed.
+Purpose: Unique resource identifier. If the type of the resource was dataset or series, a unique identifier identifying the resource must be given.
+# Proposed Change
+Change the purpose to:
+'Purpose: If the type of the resource is dataset or series, it checks that at least one unique resource identifier is given.'";PwC/ii
+A.07.IR05.IR06.ds.identification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Uses a non-well defined 'empty' instead of 'not an empty characterstring' as in previous test another expression is used.
+
+'The test first checks if a unique identifier is given and if it is of type MD_Identifier or RS_Identifier. The contained code element may not be empty.
+
+In case of RS_identifier, the codespace element should not be empty
+…'
+
+# Proposed Change
+Rewrite the Test method as follows:
+'The test first checks if a unique identifier is given and if it is of type MD_Identifier or RS_Identifier. The code element must be provided and must not be an empty characterstring.
+
+In case of RS_identifier, the codespace element must be provided and must not be an empty characterstring
+…'
+";PwC/ii
+A.08.IR03.ds.linkage;type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: It is not entirely clear which parts of the WSDL or GetCapabilities document need to be tested:  'If the response indicates a linkage is a service capabilities or WSDL document, some basic params in the service response are analysed'. Or does this only refer to 'Any service response should be checked if it provides proper linkage. The service wsdl or capabilities document should have a featuretype that shares the resource unique identification.'  
+# Proposed Change
+Perhaps CI_OnLineFunctionCode (optional element) could be used to determine the nature of the online resource locator if present.";Antonio Rotundo
+A.08.IR03.ds.linkage;type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: A manual test is suggested, if the resource locator is a web page with further instructions or a client application. 
+";Antonio Rotundo
+A.08.IR03.ds.linkage;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+-The Purpose does not make it clear when and if the test succeeds or fails.
+Purpose: If a linkage is available, a resource locator must be given. If the resource is a service, the linkage should be checked.
+
+-How do I know 'if a linkage is available to the resource' if I do not test the link? So, when does the test succeed and when is it to be considered failed?
+
+- The term resource in 'If the resource is a service,' actually does not refer to the dataset metadata but to the resource found at the URL being tested. It would be better to make this clearer.
+
+- What about URLs that are accessible only inside the intranet of an organisation?
+
+-What about the case when no linkage to the dataset is provided but the same dataset is found referenced by a Network Service described in a service metadata coming from the same catalogue?
+-What if more than one View Service offers the dataset? Shouldn't there be a National View Service (even just a proxy) of reference for each viewable dataset?
+
+
+# Proposed Change
+Rephrase the Purpose as follows:
+Purpose: This test checks each resource locator URL to see if it is syntactically correct and if the resource it references can be accessed, in order to determine its type.
+If the referenced resource is recognized as a Network Service, it checks whether the linkage to the dataset is declared and implemented.";PwC/ii
+A.08.IR03.ds.linkage;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the Test Method, the expression 'The URL is resolved.' The use of the word resolved is misleading. 
+To resolve a URL means to resolve it to an IP address while the intended meaning here is (ref. https://github.com/inspire-eu-validation/ats-metadata/blob/master/README.md#resolve )
+'Resolve: Goal is to check if a URL references an existing document. First the URL can be checked on syntactical correctness. Then a http head operation can give an indication of the availability of the document without fully downloading it. The operation might fail due to a number of reasons: the service is (temporarily) unavailable, the service is protected (status 403).'
+So, we have the following checks:
+- the URL is checked for syntactical correctness;
+- the resource is accessed to check if it is accessible
+The suggestion of using a HTTP HEAD operation is not acceptable because:
+- servers and services do not implement the HEAD operation consistently;
+- the response is not enough to identify Network Services or Harmonised Spatial Data Services.
+The following reference to a WSDL is unclear. OGC Services for which SOAP binding is implemented, still respond with a capabilities document:
+'Any service response should be checked if it provides proper linkage. The service wsdl or capabilities document should have a featuretype that shares the resource unique identification'
+
+The following hint is not complete and not correct for all service types. In addition, the linkage is always also implemented via MetadataURLs in all the services which is therefore the preferred way.
+'if WMS/WMTS/WFS, the link is in //layer[identifier={id}&&@authority={codespace}] if Atom, the link is in //feed[@uuidhref={id}&&@namespace={codespace}]'
+
+How is the following part relevant for the test outcome?
+'a final manual test is suggested to the tester (to test if any of the linkages points to a webpage with further instructions or a client application that directly accesses the service).'
+
+# Proposed Change
+Change the Test method as follows:
+
+The test checks if a linkage is provided.
+If none is given, the test will complete successfully.
+If one or more are provided, for each linkage the test checks:
+-  if the linkage element contains an element of type gmd:URL.
+- if the element content is a syntactically correct URL
+- if the referenced resource is accessible.
+
+If the response identifies the linkage as a Harmonised Spatial Data Service or a Network Service, the test checks if appropriate linkage to dataset is available.
+The linkage is established via the Metadata URL for WMS, WFS and Atom based services.
+
+ a final manual test is suggested to the tester (to test if any of the linkages points to a webpage with further instructions or a client application that directly accesses the service).
+
+";PwC/ii
+"A.08.IR03.ds.linkage and
+A.09.IR04.srv.linkage";type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Test method, second paragraph: If one or more are provided:
+# Proposed Change
+Change the '.' to ':'.";PwC/ii
+"A.08.IR03.ds.linkage
+And
+A.09.IR04.srv.linkage";type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The service wsdl or capabilities document should have a featuretype that shares the resource unique identification 
+if WMS/WMTS/WFS, the link is in //layer[identifier={id}&&@authority={codespace}] if Atom, the link is in //feed[@uuidhref={id}&&@namespace={codespace}]
+On which requirement is this based?
+# Proposed Change
+Delete this part";PwC/ii
+"A.08.IR03.ds.linkage
+And
+A.09.IR04.srv.linkage";type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The service wsdl or capabilities document should have a featuretype that shares the resource unique identification 
+if WMS/WMTS/WFS, the link is in //layer[identifier={id}&&@authority={codespace}] if Atom, the link is in //feed[@uuidhref={id}&&@namespace={codespace}]
+On which requirement is this based?
+# Proposed Change
+Delete this part";PwC/ii
+A.09.IR04.srv.linkage;type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: 'The URL is resolved.' It is not entirely clear what resolving the URI means. Which maximum timeout can be applied? Should we only look at the HTTP status code (200), or also at the returned information?
+Ambiguity: It is not entirely clear which parts of the WSDL or GetCapabilities document need to be tested: 'If the response indicates a linkage is a service capabilities or WSDL document, some basic params in the service response are analysed.' Or does it only refer to: 'Any service response should be checked if it provides proper linkage. The service wsdl or capabilities document should have a featuretype that shares the resource unique identification.'
+Testability: A manual test is suggested, if the resource locator is a web page with further instructions or a client application. 
+Note: Perhaps CI_OnLineFunctionCode (optional element) could be used to determine the nature of the online resource locator if present (see also TG SDS req 3).
+Note: What in case of access restrictions?
+Note: Another prerequisite is test case A.04.
+# Proposed Change
+Specify which HTTP status codes are acceptable.";Paul van Genuchten
+A.09.IR04.srv.linkage;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+-          The prerequisites section contains a condition that in previous test was dealt with in the Test method
+Prerequisites
+the hierarchylevel of resource should be ""service""
+# Proposed Change
+To specify the precondition of being a service, adopt the same approach as in the other tests.";PwC/ii
+A.10.IR08.IR09.ds.language;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coverage: The test should not go as far as testing whether there are textual values in the datasets or data series.
+Ambiguity: The test should specify what the 'valid 3-letter language codes according to ISO/TS 19139' are.
+Note: The test could perhaps explicitly test if the code list is identified by the URI: http://www.loc.gov/standards/iso639-2/ . The US Library of Congress is the officially mandated organisation to maintain ISO639.
+Note: Another prerequisite is test case A.04.
+";Paul van Genuchten
+A.11.IR10.IR11.ds.topic;type:ED,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Another prerequisite is test case A.04.
+# Proposed Change
+Add the test case as a prerequisite.";Paul van Genuchten
+A.12.IR12.srv.type;type:ED,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Another prerequisite is test case A.04.
+# Proposed Change
+Add the test case as a prerequisite.";Paul van Genuchten
+A.12.IR12.srv.type;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test method contains a meaningless sentence:
+'The test first checks if a service type element is given at serviceType and if it is unique throughout the document.'
+
+# Proposed Change
+Remove the sentence in bold.";PwC/ii
+A.13.IR13.keyword.md;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Its execution is actually redundant because of A.05.IR14.ds.keyword.md for datasets and series and of A.06.IR15.srv.keyword.md for services
+# Proposed Change
+Add to the test method the part in bold:
+'The test checks if at least one keyword element is provided and it is not an empty characterstring.
+This test is already implemented for data and services by A.05.IR14.ds.keyword.md and A.06.IR15.srv.keyword.md, respectively. A failure in those tests implies a failure of this test.'";PwC/ii
+A.14.IR16.IR17.IR18.vocab;type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: Validating if the keyword is actually available in the indicated vocabulary is a challenge, since the vocabulary is usually not referenced by a URL. If a vocabulary is indicated that is available to the validator, then this check can be performed.
+";Paul van Genuchten
+A.14.IR16.IR17.IR18.vocab;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The part of the test method that talks about validating the keyword against the thesaurus when its URL is available is out of place since it is not in any requirement. 
+In addition, it implies that a URL of the thesaurus is needed, which is not true:
+'Validating if the keyword is actually available in the indicated vocabulary is a challenge, since the vocabulary is usually not referenced by a URL. If a vocabulary is indicated that is available to the validator, then this check can be performed.'
+# Proposed Change
+Remove the following sentence:
+'Validating if the keyword is actually available in the indicated vocabulary is a challenge, since the vocabulary is usually not referenced by a URL. If a vocabulary is indicated that is available to the validator, then this check can be performed.'";PwC/ii
+A.15.IR19.kws-in-vocab;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Reference: TG MD 2.4.2, Req 19
+# Proposed Change
+Add correct reference.";PwC/ii
+A.15.IR19.kws-in-vocab;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test method repeats the purpose
+'In order to be consistent with ISO 19115, all the keyword values originating from a single version of a single controlled vocabulary shall be grouped in a single instance of the ISO 19115 descriptiveKeywords property.
+For each descriptiveKeywords element, the referenced controlled vocabulary should be unique'
+# Proposed Change
+From the test method, remove the following sentence:
+'In order to be consistent with ISO 19115, all the keyword values originating from a single version of a single controlled vocabulary shall be grouped in a single instance of the ISO 19115 descriptiveKeywords property.'";PwC/ii
+A.15.IR19.kws-in-vocab;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test method is wrong in its specifications because it does not accomplish the purpose
+'In order to be consistent with ISO 19115, all the keyword values originating from a single version of a single controlled vocabulary shall be grouped in a single instance of the ISO 19115 descriptiveKeywords property.
+For each descriptiveKeywords element, the referenced controlled vocabulary should be unique'
+# Proposed Change
+Rewrite the test method as follows:
+
+'In order to be consistent with ISO 19115, all the keyword values originating from a single version of a single controlled vocabulary shall be grouped in a single instance of the ISO 19115 descriptiveKeywords property.
+Each referenced controlled vocabulary  must appear in at most one descriptiveKeywords element'";PwC/ii
+A.16.IR20.IR21.ds.bounds;type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: The bounding box shall be as small as possible. Quite hard to honour. Data should be downloaded and a minimal bounds could be calculated and compared to the indicated bounds.
+Furthermore, data could be access controlled or in an unknown format. This would hinder testability further. Lastly, this may also require coordinate transformations as the source data may be in a projected CRS or use a different Meridian.
+";Paul van Genuchten
+A.16.IR20.IR21.ds.bounds;type:ED,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Another prerequisite is test case A.04.
+# Proposed Change
+Add the test case as a prerequisite.";Paul van Genuchten
+A.16.IR20.IR21.ds.bounds;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+How can you sufficiantly test a bounding box which should be as small as possible if there is no clear definition of what that means? Additionally, this is not considered as crucial for interoperability.
+# Proposed Change
+Remove IR 20 and use only IR 21.";PwC/ii
+A.16.IR20.IR21.ds.bounds;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The bounding box shall be as small as possible. Quite hard to honour. Data should be downloaded and a minimal bounds could be calculated and compared to the indicated bounds. 
+This depends on the availability of the download service, which is also not direct to recognise in the dataset metadata.
+is to difficult to check 
+# Proposed Change
+Delete the part Data should be downloaded and a minimal bounds could be calculated and compared to the indicated bounds.";PwC/ii
+A.16.IR20.IR21.ds.bounds;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The bounding box shall be as small as possible. Quite hard to honour. Data should be downloaded and a minimal bounds could be calculated and compared to the indicated bounds. 
+This depends on the availability of the download service, which is also not direct to recognise in the dataset metadata.
+is to difficult to check 
+# Proposed Change
+Delete the part Data should be downloaded and a minimal bounds could be calculated and compared to the indicated bounds.";PwC/ii
+A.17.IR22.IR23.ds.temporal;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+As formulated now, the test result does not depend on the outcome of the first test on TimePeriod, so even in case of an invalid TimePeriod, the test will pass. 
+Furthermore, the test refers to the 'validity' of the date (ISO 8601 date format), which strictly speaking relates to MD TG requirement 24.
+# Proposed Change
+Perhaps it makes sense to split up into two test cases, one for IR22 and one for IR23.
+Add a specific test case for MD TG requirement 24.";Paul van Genuchten
+A.17.IR22.IR23.ds.temporal;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+missing word at first bullet at ""Test method""
+# Proposed Change
+""Is a valid TimePeriod given and ...""";PwC/ii
+A.17.IR22.IR23.ds.temporal;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+I think it has to be the other way round: The test regarding TG Req. 23 will be passed only if at least one of the three date-checks is valid.
+Otherwise (as I read the documented tests by now) the test could fail e.g. because of a missing revision date though there is a valid creation date.
+# Proposed Change
+""The test will fail be passed if and only if at least one check among date of publication, date of last revision or date of creation doesn't evaluates to true.""";PwC/ii
+A.17.IR22.IR23.ds.temporal;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method is not formulated very clearly:
+
+# Proposed Change
+Reformulate";PwC/ii
+A.19.IR22.ds.conformity;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The reference should be 2.8 and not 2.8.1
+# Proposed Change
+Check and change.";PwC/ii
+A.19.IR28.ds.conformity;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test does not consider the notEvaluated case
+";PwC/ii
+A.19.IR28.ds.conformity;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Purpose: The metadata shall include information on the degree of conformity with the implementing rules on interoperability of spatial data sets and services.
+The check if the degree of conformity is with the implementing rules on interoperability of spatial data sets and services, is missing
+
+# Proposed Change
+Add check if the degree of conformity is with the implementing rules on interoperability of spatial data sets and services.";PwC/ii
+A.19.IR28.ds.conformity;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Purpose: The metadata shall include information on the degree of conformity with the implementing rules on interoperability of spatial data sets and services.
+The check if the degree of conformity is with the implementing rules on interoperability of spatial data sets and services, is missing
+
+# Proposed Change
+Add check if the degree of conformity is with the implementing rules on interoperability of spatial data sets and services.";PwC/ii
+"A.19.IR28.ds.conformity
+A.20.IR29.ds.specification";type:GE,type:CT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+TG Requirement 28 demands a conformity statement regarding a certain specification: IR interoperability (1089/2010 and amendments). This has not been considered in these tests. A test method aiming at the particular content of element specification is necessary.
+# Proposed Change
+Improve A.19.IR28.ds.conformity concerning this issue.";PwC/ii
+A.20.IR29.ds.specification;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The reference should be 2.8 and not 2.8.2
+# Proposed Change
+Check and change.";PwC/ii
+A.20.IR29.ds.specification;type:GE,type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+TG Requirement 29 demands the conformity statement to be formed as DQ_DomainConsistency. This has not been considered in this test.
+# Proposed Change
+improve A.20.IR29.ds.specification concerning this issue";PwC/ii
+A.21.IR30.IR31.ds.public.access;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The title contains IR31 twice
+# Proposed Change
+Remove one of the double mentioned IR31.";PwC/ii
+A.22.IR33..IR34.ds.access.use;type:CT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: This cannot be tested in an automated way: 'Descriptions of terms and conditions, including where applicable, the corresponding fees shall be provided through this element or a link (URL) where these terms and conditions are described.'
+";Alejandra Sanchez
+A.22.IR33..IR34.ds.access.use;type:CR,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The texts 'no conditions apply' and 'conditions unknown' may be replaced by language neutral codes. See: MIWP-8 (I) Language neutral identifiers.
+";Alejandra Sanchez
+A.23.IR35.IR36.responsible.party.contact.info;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test should include some checks about the email address
+";PwC/ii
+A.24.responsible.party.role;type:CR,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is still an open question on whether to include this test case, as there is no explicit requirement in the technical guidelines. 
+# Proposed Change
+It is proposed to keep this test case as the element tested is a mandatory one. Therefore the technical guidelines (TG MD) including this requirement should be changed.";Alejandra Sanchez
+A.25.IR37.md.contact;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test should include some checks about the email address
+";PwC/ii
+A.26.IR38.md.contact.role;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+redundant and missing word at first bullet at ""Open questions""
+# Proposed Change
+""Is The the codeList URL ...""";PwC/ii
+A.26.IR38.md.contact.role;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The reference should be 2.11.1 and not 2.11.2
+# Proposed Change
+Check and change.";PwC/ii
+A.26.IR38.md.contact.role;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There are Open Questions:
+Open questions:
+
+The the codeList URL above the only approved way to refer to the CI_RoleCode codelist?
+Does the string value of the RoleCode element have any significance? Does it have to also be ""pointOfContact"" or can it be missing entirely?
+
+";PwC/ii
+A.26.IR38.md.contact.role;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Check that the attribute codeList has value ""http://standards.iso.org/ittf/ PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode"" 
+This is not in accordance with the accepted schema's
+Is not checked for other codelists, so inconsistent
+# Proposed Change
+Check all accepted schemas for all codelists checks or delete this check.
+";PwC/ii
+A.26.IR38.md.contact.role;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Check that the attribute codeList has value ""http://standards.iso.org/ittf/ PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode"" 
+This is not in accordance with the accepted schema's
+Is not checked for other codelists, so inconsistent
+# Proposed Change
+Check all accepted schemas for all codelists checks or delete this check.
+";PwC/ii
+A.26.IR39.language;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method does not specify it is ISO-639/B and not ISO-639/T.
+
+The MD Regulation limits the list:
+The value domain of this metadata element is limited to the official languages of the Community expressed in conformity with ISO 639-2.
+";PwC/ii
+A.28.creation.date;type:CR,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case was removed from GitHub?
+There is still an open question whether to include this test case, as there is no explicit requirement in the technical guidelines. 
+# Proposed Change
+It is proposed to add an explicit requirement for metadata date in the MD TG. A corresponding test case must also be created.";Alejandra Sanchez
+A.29.IR07.srv.identification;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Open issue: The TGs are likely to be changed, see issue  MIWP-8_(M)_Coupled_resources.
+
+Note: there is a TODO 'to validate this is the proper identification, the identification used in capabilities might be required.'
+";Alejandra Sanchez
+A.29.IR07.srv.identification;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test name is wrong.
+This is about coupled resources, i.e. the srv:operatesOn element.
+
+The Test Method must specify that xlink:href must be resolved and the datasets metadata retrieved and parsed.
+The dataset identifiers obtained must correspond to what determined in A.08.IR03.ds.linkage
+
+There is still a todo:
+'todo: to validate this is the proper identification, the identification used in capabilities might be required'
+
+
+
+";PwC/ii
+A.30.IR27.ds.spatial resolution;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Reference: TG MD 2.7.2, Req 27
+# Proposed Change
+Add correct reference.";PwC/ii
+A.31.IR25.resource.creation.date;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coverage: This test case only addresses the creation date (TG requirement 25). The IR require also that there will be no more than one date of revision.
+";Alejandra Sanchez
+missing A.3X.IR24;type:CT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is no test for TG MD requirement 24, because this is claimed to be not testable.
+It is not clear why the temporal reference system cannot be tested.
+Also, the values for data of creation / revision / updated can be tested whether they conform to the ISO 8601 format (yyy-mm-dd).
+# Proposed Change
+Add a test case for this requirement.";Alejandra Sanchez
+Open issues;type:GE,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+We think that it is not necessary to check the pure existence of a mandatory element. The ATS should cover those tests which are not already testable by a schema validation.
+# Proposed Change
+Consider if elements which are mandatory according to ISO need to be tested by an ATS or if the validation against the schema is already sufficient.";PwC/ii
+Open questions;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The link to A.28.md.creation.date doesn't work and there's no chapter named like that.
+# Proposed Change
+Check and remove link or add A.28.md.creation.date to the ATS.";PwC/ii
+Open questions;type:,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Please include those tests
+# Proposed Change
+Add as requirement in the new TG MD";PwC/ii
+Open questions;type:,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Please include those tests
+# Proposed Change
+Add as requirement in the new TG MD";PwC/ii
+Vocabulary;type:ct,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+When an element is implemented as an Anchor as additional information not required by INSPIRE there is no need to check the validity of the link.
+# Proposed Change
+Remove this as a general test.";PwC/ii
+XML namespaces prefixes;type:ed,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The list is not complete (missing srv, gmx, and probably others)
+# Proposed Change
+Please complete";PwC/ii
+"Many namespaces are missing in xpaths. Eg: 
+./gmd:...";type:ed,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Many namespaces are missing in xpaths. Eg: 
+./gmd:identificationInfo[1]/*/gmd:citation/*/title 
+
+# Proposed Change
+Correct them";PwC/ii
+"The field 'Purpose' is often used inconsistently.
+...";type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The field 'Purpose' is often used inconsistently.
+'Purpose' shall be a summary description of what is checked, not a description of the metadata element, e.g. 
+A.02.title
+Purpose: The title by which the cited resource is known
+Should read instead:
+Purpose: Check that a resource title is specified.
+# Proposed Change
+Review and change Purpose and Test method for all tests.
+For some of the tests this has already been done below.";PwC/ii
+"There are Open questions
+There is no explicit Impl...";type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There are Open questions
+There is no explicit Implementation Requirement in TG MD for the following tests:
+A.02.title
+A.03.abstract
+A.24.responsible.party.role
+A.28.md.creation.date
+Should these be excluded or included in the ATS? Or added as requirements in the TG MD?
+";PwC/ii
+It is not clear whether this ATS aims at checking ...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not clear whether this ATS aims at checking whether in a metadata document:
+-the minimum set of required documents is present
+-some of the elements are specified incorrectly with respect to the INSPIRE requirements. This aspect is crucial to determine if a test succeeds or fails
+";PwC/ii
+English level is quite low...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+English level is quite low
+# Proposed Change
+Review all English text";PwC/ii
+There is no mention of the spatial resolution for ...;type:AT,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+There is no mention of the spatial resolution for services. It should be documented even though the ATS would be automatically testable since it was agreed to place in the abstract.
+";PwC/ii
+Is it possible to add recommended tests, to preven...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Is it possible to add recommended tests, to prevent providing not correct metadata?
+Example; all the keywords in a single instance of the ISO 19115 descriptiveKeywords property, must be a part of the referenced controlled vocabulary.
+
+# Proposed Change
+add a test to check if the keywords in the same decriptiveKeywords instance where the GEMET inspire themes is referenced, are inspire themes
+etc.";PwC/ii
+Is it possible to add recommended tests, to preven...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Is it possible to add recommended tests, to prevent providing not correct metadata?
+Example; all the keywords in a single instance of the ISO 19115 descriptiveKeywords property, must be a part of the referenced controlled vocabulary.
+
+# Proposed Change
+add a test to check if the keywords in the same decriptiveKeywords instance where the GEMET inspire themes is referenced, are inspire themes
+etc.";PwC/ii
+Some tests, declared as automated are really descr...;type:ge,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Some tests, declared as automated are really described in a very fuzzy way. It is not always clear what has to be tested and how, sometimes tests are 'suggested' (e.g. A.09.IR04.srv.linkage) 
+# Proposed Change
+Be more precise on the test method.";PwC/ii
+In the same idea, the test method often gathers se...;type:ge,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In the same idea, the test method often gathers several tests (e.g. A.09.IR04.srv.linkage) 
+# Proposed Change
+If several subtests are required present them clearly as subtests. ";PwC/ii
+Explicit references to the implementation requirem...;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Explicit references to the implementation requirements are missing (although it can be derived from the name of the test case).
+# Proposed Change
+Add a reference to the implementation requirement.";Tim Duffy
+A.02.IR04;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method should be specified in the same way as the same test in the WFS Download Service, meaning that the references to the relevant schema should be added.
+# Proposed Change
+Add the schema reference.";PwC/ii
+A.02.IR04.extended.capabilities.node;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'Check that the extended capabilities element validates against the INSPIRE schemas.'
+Coverage: it seems not correct that by applying the XSD Schema validation it is possible to validate the inspire view service metadata requirements (IR04).
+# Proposed Change
+There are two options:
+Option 1. Update IR04 removing the reference to the INSPIRE View Service metadata requirements;
+Option 2. Merge this test case with one or more other test cases testing the INSPIRE View Service metadata requirements (in both scenarios).";Tim Duffy
+A.02.IR04.extended.capabilities.node;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Prerequisite: Test case A.03.IR05.schema.validation is a prerequisite to this test case, as it tests whether the GetCapabilities document can be retrieved and whether it is valid according to the WMS Capabilities schema. 
+# Proposed Change
+Add A.03.IR05.schema.validation as a prerequisite.";Tim Duffy
+A.03.IR05.schema.validation;type:CT,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Validation of the Capabilities document to the WMS schema alone (so to http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd and without the INSPIRE schema http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd  means that an implementation with INSPIRE ExtendedCapabilities will by definition fail the validation test. Because the ExtendedCapabilities element is not declared in the WMS schema. The schema  http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd includes the required WMS schema.
+# Proposed Change
+Change the schema for validation to:  http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd ";PwC/ii
+A.03.IR05.schema.validation;type:CT,sev:Critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Validation of the Capabilities document to the WMS schema alone (so to http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd and without the INSPIRE schema http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd  means that an implementation with INSPIRE ExtendedCapabilities will by definition fail the validation test. Because the ExtendedCapabilities element is not declared in the WMS schema. The schema  http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd includes the required WMS schema.
+# Proposed Change
+Change the schema for validation to:  http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd ";PwC/ii
+A.03.IR05.schema.validation;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coverage: The IR05 seems to require testing in the first place whether the Capabilities document can be retrieved using valid HTTP request parameters. This requires that the GetCapabilities request should be tested without specifying a language parameter (default language) and also for all LANGUAGE parameters that the service provides. 
+Furthermore, the test should only succeed if the Capabilities document does not contain an exception (i.e. the response can be valid against the WMS Capabilities schema when containing an exception).
+# Proposed Change
+First, the test should retrieve the Capabilities document using the default language (without language parameter). 
+Different outcomes are possible:
+- HTTP error (e.g.4XX or 5XX) response: the test fails;
+- HTTP 200 response, but with service exception document: the test fails;
+- HTTP 200 response with capabilities document that validates against the ISO 19128 schema: the test succeeds. 
+Second, the GetCapabilities request should be repeated for all supported languages.  (>> update: this is done in test A.40)
+- HTTP 4XX response: the test fails;
+- HTTP 200 response, but with service exception document: the test fails;
+- HTTP 200 response with capabilities document that validates against the ISO 19128 schema: the test succeeds if the language is current. ";Tim Duffy
+A.04.IR06.metadataURL.node;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'If no metadata URL is given then all mandatory ISO 19128 metadata elements must exist in the ExtendedCapabilities section.'
+It seems wrong to expect the ISO 19128 elements in the Extended element.
+The mandatory ISO 19128 metadata elements must be provided, regardless whether or not there is a <metadataURL> link.
+The check for the mandatory ISO 19128 metadata elements is also covered by test cases A10, A11, A14, A19, A20, A21.
+# Proposed Change
+The mandatory ISO 19128 elements are in the <wms:Capabilities> (<service>) elements not in the <extendedCapabilities> elmement.
+Remove the condition 'if no metadata URL is given…'.
+Consider merging the check for the mandatory ISO 19128 metadata elements with test cases A10, A11, A14, A19, A20, A21.";Tim Duffy
+A.05.IR07.extended.capabilities.elements.node;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'If no metadata URL is given then all mandatory ISO 19128 metadata elements must exist in the ExtendedCapabilities section.'
+It seems wrong to expect the ISO 19128 elements in the Extended element.
+# Proposed Change
+The mandatory ISO 19128 elements are in the <wms:Capabilities> (<service>) elements not in the <extendedCapabilities> elmement.";Tim Duffy
+A.05.IR07.extended.capabilities.elements.node;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The reference to 'ISO 19128 metadata elements' is a 404. It is unclear what the 'ISO 19128 metadata elements' are.
+# Proposed Change
+Update reference to unambiguously identify the metadata elements for which test assertions are needed.";Tim Duffy
+A.05.IR07.extended.capabilities.elements.node;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Conditional test: This test case should only fail in case of 'scenario 2' only. This means that the test case should also test for the absence of a <metadataURL> element.
+
+# Proposed Change
+It may be better to merge test cases A.04, A.05, and A.07-A.024. There are dependencies in the outcomes of these test cases. 
+The following situations are possible:
+- scenario 1 only (only a <metadataURL> field): the test case should check whether all mandatory ISO19128 elements exist ánd if the referred metadata record can be retrieved and meets the INSPIRE metadata requirements;
+- Scenario 2 only (no <metadataURL> element): the test case should check whether all mandatory ISO19128 elements exist. Additionally, it should check whether are requirement INSPIRE metadata elements are valid;
+- Scenario 1 and 2 (both a <metadataURL>: the test case should check whether all mandatory ISO19128 elements exist. Additionally, it should check whether are requirement INSPIRE metadata elements are valid ánd if the referred metadata record can be retrieved and meets the INSPIRE metadata requirements. ";Tim Duffy
+A.06.IR08.language.node;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The purpose of the test is wrong (copy-paste error). It does not refer to IR08.
+# Proposed Change
+Update the purpose, with the normative statement for IR08.";Tim Duffy
+A.07.IR10.title.abstract;type:CT,type:CR,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coverage: This test case does not fully tests the IR10 requirement: 'An INSPIRE View service shall contain the INSPIRE metadata elements set out in the Metadata Regulation [INS MD] as shown in Table 3.'
+# Proposed Change
+Change the test or change the requirement only to cover keyword.
+It may be better to merge this test case with A.04, A05, A07, and A11-A21.";Tim Duffy
+A.08.IR11.resource.type.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case only needs to be executed in the context of 'scenario 2'.  Prerequisites should reference other test cases in the same ATS or a conformance class, not introduce additional assertions. 
+# Proposed Change
+Move assertions to the test methods. In particular, incorporate this 'precondition' into the test method. Alternatively, it may be better to merge test cases A.04, A.05, and A.07-A.024.";Tim Duffy
+A.09.IR12.resource.locator.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case only needs to be executed in the context of 'scenario 2'. Prerequisites should reference other test cases in the same ATS or a conformance class, not introduce additional assertions.
+# Proposed Change
+Incorporate this 'precondition' into the test method. Alternatively, it may be better to merge test cases A.04, A.05, and A.07-A.024.";Tim Duffy
+A.10.IR13.coupled.resource.node;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: 'is a valid link' – how will this be unambiguously assessed? Based on the HTTP GET Response?
+Also, this is a duplicate of A.11.IR14
+Open issue: The TGs are likely to be changed, see issue  MIWP-8_(M)_Coupled_resources.
+
+# Proposed Change
+Option 1: merge test case with A.10.IR13.
+Option 2: split the test method over the two test cases.";Tim Duffy
+A.10.IR13.coupled.resource.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method is inaccurate.
+It does not say that the resource referenced by the MetadataURL must be accessed and its response analysed.
+It does not consider, either,  that multiple MetadataURL elements can be present, some pointing html resources, other to xml ones.
+";PwC/ii
+A.10.IR13.coupled.resource.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Test Method is inaccurate.
+It does not say that the resource referenced by the MetadataURL must be accessed and its response analysed.
+It does not consider, either,  that multiple MetadataURL elements can be present, some pointing html resources, other to xml ones.
+";PwC/ii
+A.11.IR14.metadata.record.node;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case duplicates A.10.IR13.coupled.resource.node. 
+
+# Proposed Change
+Option 1: merge test case with A.10.IR13.
+Option 2: split the test method over the two test cases.";Tim Duffy
+A.12.IR15.spatialdataservicetype.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case only needs to be executed in the context of 'scenario 2'. Prerequisites should reference other test cases in the same ATS or a conformance class, not introduce additional assertions. I.e. What should the test result be in case of 'scenario 1' (skipped, not-applicable, etc-)?
+# Proposed Change
+Incorporate this 'precondition' into the test method. Alternatively, it may be better to merge test cases A.04, A.05, and A.07-A.024.";Tim Duffy
+A.13.IR18.keywords.node;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Overlap with A.39.IR16, which already checks for '/inspire_common:MandatoryKeyword'
+
+Testability: if it is optional to define additional keywords (/inspire_common:Keyword) on top of /inspire_common:MandatoryKeyword, then this test would fail if no additional keywords are provided.
+
+This test case only needs to be executed in the context of 'scenario 2'.
+# Proposed Change
+Consider merging with A.39.IR16";Tim Duffy
+A.15.IR20.dates.node;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case only needs to be executed in the context of 'scenario 2'. What should the test result be in case of 'scenario 1' (skipped, not-applicable, etc-)?
+# Proposed Change
+Rewrite the test method and provide clear instructions on the test outcome.";Tim Duffy
+A.16.IR21.temporal.reference.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: This testcase as written now is already covered by test case A.15.IR20. It seems that this test case should be about the temporal extent (as a period).  
+Also, as it is no, it is not clear under which conditions this test case fails. 
+This test case only needs to be executed in the context of 'scenario 2'.
+# Proposed Change
+Merge with test case A.15.IR20 and clarify in which cases (creation date, publication data, date of last revision, temporal extent) the test should fail. Please note that the combination of the requirements from the INSPIRE Metadata IR and ISO19115 make that the presence of temporal extent does not affect the outcome of the test.
+
+NB: also in IR21, the word temporal extent should be added (as it is implied).";Tim Duffy
+A.17.IR22.conformity.deegree.node;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Note: in TG Requirement Coverage table (req# 22), the link to this test case returns a 404 error.
+This test case seems to only fail if the degree of conformity is not mentioned. Perhaps it should also fail if there is no conformity node (which is checked in A.18.IR23.conformity.node).
+
+This test case only needs to be executed in the context of 'scenario 2'.
+# Proposed Change
+Update link in TG Requirement Coverage table.
+
+Consider merging this test case with A.18.IR23.conformity.node.";Tim Duffy
+A.18.IR23.conformity.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Some tags were dropped from the purpose description. 
+
+This test case only needs to be executed in the context of 'scenario 2'.
+# Proposed Change
+Add the tags back to the purpose description.";Tim Duffy
+A.19.IR24.fees.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+As 'conditions applying to access and use' are mandatory according to the INSPIRE Metadata IR, the test should fail when the wms:fees element is not present. 
+# Proposed Change
+Update the test method accordingly.";Tim Duffy
+A.20.IR25.contactpersonprimary.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Currently the test only considers whether a wms:ContactPersonPrimary node exists in the wms:ContactInformation section.
+However, the requirement states that also a wms:ContactOrganization node should be present within wms:ContactPersonPrimary
+# Proposed Change
+Update test method to reflect the testing of the following structure:
+/WMS_Capabilities/Service/ContactInformation
+/WMS_Capabilities/Service/ContactInformation/ContactPersonPrimary
+/WMS_Capabilities/Service/ContactInformation/ContactPersonPrimary/ContactOrganization
+
+";Tim Duffy
+A.22.IR27.IR28.metadata.pointofcontact.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case only needs to be executed in the context of 'scenario 2'. 
+# Proposed Change
+Incorporate this 'precondition' into the test case. Alternatively, it may be better to merge test cases A.04, A.05, and A.07-A.024.";Tim Duffy
+A.24.IR29.metadata.date.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+This test case only needs to be executed in the context of 'scenario 2'. 
+# Proposed Change
+Incorporate this 'precondition' into the test case. Alternatively, it may be better to merge test cases A.04, A.05, and A.07-A.024.";Tim Duffy
+A.26.IR31.getmap.format.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Like for the WMTS test case, the test could also check whether the returned image is indeed encoded in the requested format.
+# Proposed Change
+Add: 'Make a GetTile request for the layer using a maximum allowed bounding box and either ""image/png"" or ""image/gif"" format and check that the returned image is encoded in the requested format.'";Tim Duffy
+A.31.IR36.layer.bbox.node;type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method does not explain how to determine 'all supported CRS' to test against. 
+# Proposed Change
+Clarify that this is based on the wms:CRS elements.";Tim Duffy
+A.32.IR38.layer.identifier.node;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Since IR38 is split into two test cases, the test purpose should be updated to reflect this. 
+
+# Proposed Change
+The test case should probably test whether all authority attributes of Identifier elements have corresponding AutorityURL elements with that name.";Tim Duffy
+A.32.IR38.layer.identifier.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The identifiers found here, together with the information in authorityURL, shall match the information found from MetadataURL.
+";PwC/ii
+A.32.IR38.layer.identifier.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The identifiers found here, together with the information in authorityURL, shall match the information found from MetadataURL.
+";PwC/ii
+A.33.IR38.authority.url.node;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Note: in TG Requirement Coverage table (req# 38), the link to this test case returns a 404 error.
+More importantly, it is not clear why there should be a AuthorityURL node in each layer. IR38 suggests that this can be defined only once. The example in the TGs also has this element only once… and has multiple layers.
+
+Also, the test purpose is that of IR37 instead of 38.
+# Proposed Change
+Update the purpose. Alternatively, consider merging test cases A.32 and A.33.
+";Tim Duffy
+A.33.IR38.authority.url.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test does not specify which information inside AutorityURL actually represents the namespace:
+-<AuthorityURL name=""MAGRAMA"">
+<OnlineResource xlink:href=""http://www.magrama.gob.es"" xlink:type=""simple"" />
+</AuthorityURL>
+";PwC/ii
+A.33.IR38.authority.url.node;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test does not specify which information inside AutorityURL actually represents the namespace:
+-<AuthorityURL name=""MAGRAMA"">
+<OnlineResource xlink:href=""http://www.magrama.gob.es"" xlink:type=""simple"" />
+</AuthorityURL>
+";PwC/ii
+A.35.IR39.harmonized.layer.name;type:GE,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Overlap with A.10 with regard to the testing of the HREF attribute.
+";Tim Duffy
+A.35.IR39.harmonized.layer.name;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+How to deal with the problem that a layer name has to be unique in a WMS (at least Geoserver). E.g. for Statistical Units there are 2 layer names (SU.VectorStatisticalUnit, SU.StatisticalGridCell) but multiple datasets (like Grids in various sizes) have to be displayed.
+# Proposed Change
+The use and usefulness of harmonized layer names has to be discussed further.";PwC/ii
+A.35.IR39.harmonized.layer.name;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+A typo. The 'test method' section and the Notes section refer to 'WMTS layers'. This must be 'WMS layers'.
+# Proposed Change
+Change WMTS to WMS";PwC/ii
+A.35.IR39.harmonized.layer.name;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+A typo. The 'test method' section and the Notes section refer to 'WMTS layers'. This must be 'WMS layers'.
+# Proposed Change
+Change WMTS to WMS";PwC/ii
+A.36.IR40.etrs89;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+What about the INSPIRE relevant CRS (EPSG 4258, 3034)? Should they be mentioned here as well?
+# Proposed Change
+Add the INSPIRE CRS applicable for WMS  ";PwC/ii
+A.36.IR40.etrs89.itrs.crs;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability: refer to note in test case: 'will not be complete without a machine-readable ""whitelist"" register of the acceptable CRSes with their CRS identifiers and commonly used aliases'
+";Tim Duffy
+A.39.IR16.spatial.data.service.keyword.embedded.metadata;type:,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Test case already includes a test for this. 
+This test case only needs to be executed in the context of 'scenario 2'. 
+# Proposed Change
+Consider merging with A.13.IR18.keywords.node.";Tim Duffy
+IR01;type:CR,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Implementation requirement 1 is too general to be tested. 
+# Proposed Change
+As it is intended for scoping the technical guidance, it may be better to remove this as an explicit requirement from the document.";Tim Duffy
+IR02, IR03;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+These requirements for compliance with the 'basic WMS' conformance class should perhaps be included as an explicit abstract test case.
+# Proposed Change
+Add this as a test case with reference to an explicit external conformance class 'OGC WMS 1.3.0. Basic WMS Server'.";Tim Duffy
+IR02, IR03;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The requirements related to conformance with the WMS standard are not represented in the ATS.
+# Proposed Change
+The ATS should reference the OGC WMS conformance class(es) that are a dependency (but not reference individual WMS tests). With a view to ETSs for those, in general, the tests for WMS 1.3.0 should be provided by OGC CITE (which would require the WMS 1.3.0 tests to be amended to be independent of any test dataset).";Tim Duffy
+IR04;type:CR,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'The extended capabilities section shall be used to fully comply with the INSPIRE View Service metadata requirements (see section 4.2.3.3.1).'
+This sentence is just about scoping, as the metadata requirement is covered by IR10.
+# Proposed Change
+It may be better to remove this statement from the requirement. ";Tim Duffy
+IR06;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'Mandatory ISO 19128 – WMS 1.3.0 metadata elements shall be mapped to INSPIRE metadata elements to implement a consistent interface.'
+This statement is redundant to IR10. 
+# Proposed Change
+It may be better to remove this statement from IR06, as it is already covered in IR10.";Tim Duffy
+IR07;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'It is mandatory to use the mapping provided in this Technical Guideline (described in Section 4.2.3.3.1.1 to 4.2.3.3.1.16. INSPIRE metadata elements that cannot be mapped to available [ISO 19128] – WMS1.3.0 elements are implemented as Extended Capabilities.'
+This statement is redundant to IR10.
+# Proposed Change
+Remove this statement from IR07, as it is already covered in IR10.";Tim Duffy
+IR07;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+'Metadata are published through a service's capabilities document and can be harvested by an INSPIRE Discovery service.'
+This sentence is almost literally repeated for IR09.
+# Proposed Change
+This sentence can be removed from IR07 as it is covered by IR09.";Tim Duffy
+IR17;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Coverage: There is no test case for IR17. However, it is not clear why this requirement is not testable. Is this because the test result would always succeed, irrespective of whether or not there is a wms:KeywordList with wms:Keywords?
+";Tim Duffy
+IR37 (missing test case);type:CT,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not clear why this requirement cannot be tested. 
+It seems that this requirement refers to the inclusion of a unique resource identifier in an external metadata record (scenario 1 – metadata record as online resource). 
+# Proposed Change
+Clarify whether this test should be added, it could also be covered by a more general test case that retrieves the metadata record and checks whether resource identifiers are present.";Tim Duffy
+IR49 (missing);type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not clear why IR49 on category layer MetadataURL cannot be tested. 
+";Tim Duffy
+IR50-IR59;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+These requirements for conformance with the WMS standard should perhaps be included as explicit abstract test cases that make reference to the corresponding OGC ATSs.
+# Proposed Change
+Add explicit abstract test cases for these requirements with reference to the corresponding OGC ATSs.";Tim Duffy
+missing for IR09;type:CT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is claimed that this requirement is not testable. This seems wrong.
+
+# Proposed Change
+It seems that this could be testable in both scenarios:
+- scenario 1: Retrieve the URL to the Discovery service from <metadataURL>. Verify if the metadata record exists and is valid. 
+- scenario 2: The ATS could require an optional test run parameter to indicate the corresponding discovery service. A query could check whether there is indeed a corresponding metadata record in the discovery service.";Tim Duffy
+If MetadataURL is specified in the Extended Capabi...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+If MetadataURL is specified in the Extended Capabilities some elements  (like the resource title, abstract, keywords) will be mapped twice: once in the standard capabilities elements and once in the linked metadata document.
+There is no guidance about this.
+";PwC/ii
+When the resource referenced by a MetadataURL elem...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+When the resource referenced by a MetadataURL element (in the Extended Capabilities or in the layer element) is accessed, the response that comes back is usually wrapped inside a GetRecordById.
+However, according to the OGC WMS 1.3.0 specifications, it can be just the metadata file.
+If this is allowed, it should be explained.
+";PwC/ii
+The Prerequisites contain  the following sentences...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites contain  the following sentences, the meaning of which is really not clear:
+
+Test for the existence of default element namespace.
+Test for the existence of the namespaces for INSPIRE View Services inspire_vs and inspire_common.
+
+";PwC/ii
+If MetadataURL is specified in the Extended Capabi...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+If MetadataURL is specified in the Extended Capabilities some elements  (like the resource title, abstract, keywords) will be mapped twice: once in the standard capabilities elements and once in the linked metadata document.
+There is no guidance about this.
+";PwC/ii
+When the resource referenced by a MetadataURL elem...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+When the resource referenced by a MetadataURL element (in the Extended Capabilities or in the layer element) is accessed, the response that comes back is usually wrapped inside a GetRecordById.
+However, according to the OGC WMS 1.3.0 specifications, it can be just the metadata file.
+If this is allowed, it should be explained.
+";PwC/ii
+The Prerequisites contain  the following sentences...;type:GE,sev:,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The Prerequisites contain  the following sentences, the meaning of which is really not clear:
+
+Test for the existence of default element namespace.
+Test for the existence of the namespaces for INSPIRE View Services inspire_vs and inspire_common.
+
+";PwC/ii
+Explicit references to the implementation requirem...;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Explicit references to the implementation requirements are missing (although it can be sometimes derived from the name of the test case).
+# Proposed Change
+Add a reference to the implementation requirement.";michellutz
+Prerequisites should reference other test cases in...;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Prerequisites should reference other test cases in the same ATS or a conformance class, not introduce additional assertions.
+# Proposed Change
+Move assertions to the test methods.";michellutz
+Link to specific test case is missing for prerequi...;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Link to specific test case is missing for prerequisites
+# Proposed Change
+Update prerequisites with specific reference tests";michellutz
+A.01.IR77.language.param;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The meaning of 'RESTful or procedure oriented' could be clarified.
+";michellutz
+A.02.IR79.layer.metadata.ref;type:GE,type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity:  What is 'a valid WMTS 1.0.0 ServiceMetadata document'? Is it a WMTS 1.0.0 Capabilities document that is schema valid?
+Notes: First sentence in 'purpose' section: a unambiguous -> an unambiguous 
+";michellutz
+A.03.IR82.image.format;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Reference refers to Chapter 5.2.3.3.2.2, while the correct chapter would be Chapter 4.2.3.3.2.2
+# Proposed Change
+Update reference to TG VS Chapter 4.2.3.3.2.2";michellutz
+A.04.layer.name.id;type:ED,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Ambiguity: Wording of purpose not entirely clear: 'It must be unambiguous to find out which of the layers provided by the service visualize the INSPIRE spatial data sets given in the Data Specifications for each INSPIRE theme'
+Testability: 'the list of valid layer names should be in the INSPIRE registry, if it is supposed to be used in a test. 
+Notes:
+Open questions/notes on the usefulness of harmonised layer names
+
+# Proposed Change
+Clarify that the correct harmonised layer names (which are codes ) are indeed in the inspire registry: http://inspire.ec.europa.eu/layer ";michellutz
+A.05.IR85.layer.title;type:ED,sev:minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+In purpose: users' -> users
+Will validation of the correctness of the translated title be included (see note)?
+
+# Proposed Change
+Evaluate and update test method.
+Clarify whether the translations need to be tested, and whether the correct harmonised layer names (which are codes) and the translated labels to be used are in the inspire registry: http://inspire.ec.europa.eu/layer";michellutz
+A.05.IR85.layer.title;type:ED,sev:Minor,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Add an explicit reference to implementation requirement 85
+# Proposed Change
+Add an explicit reference to implementation requirement 85";michellutz
+A.06.IR86.layer.abstract;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Test method only verifies whether abstract is a non-empty character string. There is no check to validate that the language presented is the correct one.
+# Proposed Change
+Evaluate and update test method";michellutz
+A.07.IR88.layer.bbox;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method states 'longitude and latitude, in this order' – How to test that a value is longitude or latitude?
+# Proposed Change
+Evaluate and update test method";michellutz
+A.08.IR90.layer.style;type:AT,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Test purpose states that at least one style element exists per layer. However, the test method does not include a check on the existence of at least one layer style.
+# Proposed Change
+Update test method to include check on whether at least one layer style exists.";michellutz
+A.09.IR91.layer.legend;type:CR,sev:critical,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+It is not possible to check whether the resolved legend resource is a valid image as the format attribute has no requirements in the TG (see notes).
+# Proposed Change
+Evaluate and update test method";michellutz
+IR 89;type:AT,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Add a test covering the ETRS based CRS in the same way as in WMS. Consider to add here the CRS here as well.
+# Proposed Change
+Add an additional test or reference the test from WMS ATS.";PwC/ii
+IR74-IR75, IR78, IR81, IR82;type:CT,sev:Medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The requirements related to conformance with the WMTS standard are not represented in the ATS. 
+# Proposed Change
+The ATS should reference the OGC WMTS conformance class(es) that are a dependency (but not reference individual WMTS tests). With a view to ETSs for those, in general, the tests for WMTS 1.0.0 should be provided by OGC CITE.";michellutz
+Tile Matrix;type:GE,sev:medium,ms:,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Consider to add a requirement for a tile matrix system, since a commonly used tile matrix is crucial for interoperable cross-border WMTS.  
+# Proposed Change
+Add a commonly used tile System (e.g. Pseudo-Wercator or InspireCRS84Quad) as requirement and a corresponding test case.";PwC/ii

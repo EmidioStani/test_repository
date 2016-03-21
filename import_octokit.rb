@@ -29,13 +29,13 @@ user.login
 
 repo = get_input('Enter repo (owner/repo_name) >')
 
-Issue = Struct.new(:title, :body, :labels)
+Issue = Struct.new(:title, :body, :labels, :assignee)
 issues = Array.new
 
 CSV.foreach issues_csv, headers: true, :row_sep => "\r\n", :col_sep => ";" do |row|
 	labels = []
 	labels << row['Labels'].split(',') unless row['Labels'].nil?
-	issues << Issue.new(row['Title'], row['Description'], labels)
+	issues << Issue.new(row['Title'], row['Description'], labels, row['Assignee'])
 end
 
 unique_labels = issues.map{ |i| i.labels }.flatten.map{|j| j.to_s.strip}.uniq
@@ -52,7 +52,7 @@ end
 
 issues.each_with_index do |issue, i|
 	puts "creating issue '#{issue.title}'"
-	issue_number = client.create_issue(repo, issue.title, issue.body, {:labels => issue.labels.join(',')}).number
+	issue_number = client.create_issue(repo, issue.title, issue.body, {:labels => issue.labels.join(','), :assignee => issue.assignee}).number
     #elapsed_seconds = ((Time.now - start_time) * 1000).to_i
     #puts "'#{i}' - elapsed seconds: '#{elapsed_seconds}'"
     if (i+1) % 30 == 0
