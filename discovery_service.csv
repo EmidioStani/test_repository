@@ -1,0 +1,201 @@
+Title;Labels;Description
+The test method descriptions often are not unambiguously ...;type:GE,sev:medium,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+The test method descriptions often are not unambiguously clear with respect to exactly what needs to the asserted. Providing the Xpath references for each selection and assertion necessary would help.
+"
+A.01.01.ISO_AP;type:GE,sev:critical,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+ATS not provided as it is still a subject of further implementation specification development.
+
+Coverage: consider of splitting into different tests; support of all mandatory operations and their parameters, correct encoding of the requests and responses
+# Proposed Change
+It could be possible to work with OGC to implement such a test in OGC CITE. As testing for an OGC standard is not INSPIRE-specific and should be provided by OGC.
+
+"
+A.01.02.extended.behaviour;type:CT,sev:critical,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+ATS not provided as it is still a subject of further implementation specification development.
+# Proposed Change
+Remove test case because of redundancy:
+“The test is an abstraction of all the tests in this Abstract Test Suite”"
+A.01.03.iso_19115_19119.model;type:CT,sev:critical,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Testability + Ambiguity: both the test purpose and test method need more details and clarification in order to arrive at a test case which “is sufficient to enable a test verdict to be assigned unambiguously to each potentially observable test outcome”
+
+Notes:
+Unique identification (name) for this tests needs to be added (e.g. A.1.3 Metadata request).
+
+NR IS should be added as reference (Annex II Part A 2.1)
+
+XPATH expression is missing
+"
+A.01.03.iso_19115_19119.model.md;type:ED,sev:,ms:JRC,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Title is wrong:
+A Unique identification for this test
+"
+A.01.03.iso_19115_19119.model.md;type:ED,sev:medium,ms:JRC,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+Title is wrong:
+A Unique identification for this test
+"
+A.01.04.language.parameter;type:ED,sev:Minor,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+IR N2 reference should be part A and not part B
+XPATH expression is missing
+
+# Proposed Change
+Update reference to IR N2
+
+Add XPATH reference"
+A.01.05.iso-639.codes;type:AT,sev:medium,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+“A.1.4 Language parameter” should be a prerequisite
+"
+A.01.06.unsupported.languages;type:AT,sev:medium,ms:ARENA,status:confirmed;"*This issue has been extracted from the issue list on:https://ies-svn.jrc.ec.europa.eu/issues/2685*
+# Comment
+“A.1.4 Language parameter” should be a prerequisite
+Furthermore there is some overlap with case 2 of test case A.1.4
+# Proposed Change
+Add 1.4 as prerequisite or consider merging with test case A.1.4"
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+;;
